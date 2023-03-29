@@ -1,0 +1,21 @@
+2023-03-29 14:45:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOK" not found; SQL statement:
+select b1_0.id,b1_0.body,b1_0.create_time,b1_0.name,b1_0.subject,b1_0.update_time from book b1_0 [42102-214]
+2023-03-29 14:45:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOK" not found; SQL statement:
+select b1_0.id,b1_0.body,b1_0.create_time,b1_0.name,b1_0.subject,b1_0.update_time from book b1_0 [42102-214]
+2023-03-29 14:51:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOK" not found; SQL statement:
+select t1_0.username,b1_0.name,b1_0.id,b1_0.body,b1_0.create_time,b1_0.subject,b1_0.update_time,t1_0.create_time,t1_0.password,t1_0.update_time from users t1_0 left join book b1_0 on t1_0.username=b1_0.name where t1_0.username=? [42102-214]
+2023-03-29 14:52:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOK" not found; SQL statement:
+select b1_0.id,b1_0.body,b1_0.create_time,b1_0.name,b1_0.subject,b1_0.update_time from book b1_0 [42102-214]
+2023-03-29 14:52:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOK" not found; SQL statement:
+select b1_0.id,b1_0.body,b1_0.create_time,b1_0.name,b1_0.subject,b1_0.update_time from book b1_0 [42102-214]
+2023-03-29 14:52:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOK" not found; SQL statement:
+select b1_0.id,b1_0.body,b1_0.create_time,b1_0.name,b1_0.subject,b1_0.update_time from book b1_0 [42102-214]
+2023-03-29 14:52:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOK" not found; SQL statement:
+select b1_0.id,b1_0.body,b1_0.create_time,b1_0.name,b1_0.subject,b1_0.update_time from book b1_0 [42102-214]
