@@ -1,6 +1,7 @@
 package hkmu.comps380f.controller;
 
 import hkmu.comps380f.dao.BookService;
+import hkmu.comps380f.dao.UserManagementService;
 import hkmu.comps380f.exception.AttachmentNotFound;
 import hkmu.comps380f.exception.BookNotFound;
 import hkmu.comps380f.model.Attachment;
@@ -27,16 +28,18 @@ public class BookController {
 
     @Resource
     private BookService bService;
-
+    UserManagementService umService;
     // Controller methods, Form-backing object, ...
     @GetMapping(value = {"", "/list"})
     public String list(ModelMap model) {
         model.addAttribute("bookDatabase", bService.getBooks());
+        model.addAttribute("ticketUsers", umService.getTicketUsers());
         return "list";
     }
     @GetMapping(value = {"/list/user/{username}"})
     public String list(ModelMap model, @PathVariable("username") String username) {
         model.addAttribute("bookDatabase", bService.getBooksByUser(username));
+        model.addAttribute("ticketUsers", umService.getTicketUsers());
         return "list";
     }
     @GetMapping("/create")
