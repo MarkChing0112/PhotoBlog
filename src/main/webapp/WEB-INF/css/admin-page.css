@@ -1,0 +1,21 @@
+h1{
+    text-align: center;
+}
+.container {
+    padding: 3rem 0rem;
+    
+  }
+  
+h4 {
+    margin: 2rem 0rem 1rem;
+  }
+  
+.navbar-brand{
+    margin-left: 10px;
+}
+.navbar form {
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-right: 10px;
+    
+}

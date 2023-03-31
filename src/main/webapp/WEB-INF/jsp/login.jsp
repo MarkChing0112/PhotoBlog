@@ -1,8 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Customer Support Login</title>
+    <title>BookWell Login</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"><link rel="stylesheet" href="./style.css">
+<%--    <link rel="stylesheet" href="/css/signin.css" type="text/css">--%>
+    <style><%@include file="../css/signin.css"%></style>
+
+
+
 </head>
+
 <body>
 <c:if test="${param.error != null}">
     <p>Login failed.</p>
@@ -10,7 +18,37 @@
 <c:if test="${param.logout != null}">
     <p>You have logged out.</p>
 </c:if>
-<h2>Customer Support Login</h2>
+
+
+<div class="box-form">
+    <div class="left">
+        <div class="overlay">
+            <h1>Book Well</h1>
+            <p>We are book-lovers, like you. And we ship books, magazines, reference material, travel guides,
+                card stock,
+            </p>
+            <p>
+                Put our extensive global network, partner associations, and specialized resources at your disposal.</p>
+        </div>
+    </div>
+    <div class="right">
+        <h5>Welcome </h5>
+        <p>Type your's Account to watch more book. </a> Enjoy our website.</p>
+
+<%--<form action="/login" method="post">--%>
+<%--    <input type="text" name="username" id="username" placeholder="Username" required>--%>
+
+<%--    <input type="password" name="password" id="password" placeholder="Password" required>--%>
+<%--    <input type="checkbox" id="remember-me" name="remember-me"/>--%>
+<%--    <label for="remember-me">Remember me</label><br/><br/>--%>
+<%--    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
+<%--&lt;%&ndash;    <button type="submit" >Login</button>&ndash;%&gt;--%>
+<%--    <input type="submit" value="Log In"/>--%>
+<%--    <a type="button" href="<c:url value="/user/create"/>" href="register.html"> Register</a>--%>
+<%--</form>--%>
+
+
+
 <form action="login" method="POST">
     <label for="username">Username:</label><br/>
     <input type="text" id="username" name="username"/><br/><br/>

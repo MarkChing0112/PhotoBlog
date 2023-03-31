@@ -33,13 +33,13 @@ public class BookController {
     @GetMapping(value = {"", "/list"})
     public String list(ModelMap model) {
         model.addAttribute("bookDatabase", bService.getBooks());
-        model.addAttribute("ticketUsers", umService.getTicketUsers());
+//        model.addAttribute("ticketUsers", umService.getTicketUsers());
         return "list";
     }
     @GetMapping(value = {"/list/user/{username}"})
     public String list(ModelMap model, @PathVariable("username") String username) {
         model.addAttribute("bookDatabase", bService.getBooksByUser(username));
-        model.addAttribute("ticketUsers", umService.getTicketUsers());
+//        model.addAttribute("ticketUsers", umService.getTicketUsers());
         return "list";
     }
     @GetMapping("/create")
