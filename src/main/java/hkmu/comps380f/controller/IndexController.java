@@ -7,15 +7,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class IndexController {
     @GetMapping("/")
     public String index() {
-        return "redirect:/Books/list";
+        return "redirect:/Books/home";
     }
     @GetMapping("/login")
     public String login() {
         return "login";
     }
 
-//    @GetMapping("/home")
-//    public  String home(){return  "home";}
+    @GetMapping("/AdminLogin")
+    public String AdminLogin() {return "adminLogin";}
 
 }
 

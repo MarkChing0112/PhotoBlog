@@ -30,18 +30,24 @@ public class BookController {
     private BookService bService;
     UserManagementService umService;
     // Controller methods, Form-backing object, ...
-    @GetMapping(value = {"", "/list"})
+    @GetMapping(value = {"","/home"})
+    public String home(ModelMap model){
+        model.addAttribute("bookDatabase", bService.getBooks());
+
+        return  "home";
+    }
+    @GetMapping(value = { "/list"})
     public String list(ModelMap model) {
         model.addAttribute("bookDatabase", bService.getBooks());
 //        model.addAttribute("ticketUsers", umService.getTicketUsers());
-        return "list";
+        return "BooksList";
     }
-    @GetMapping(value = {"/list/user/{username}"})
-    public String list(ModelMap model, @PathVariable("username") String username) {
-        model.addAttribute("bookDatabase", bService.getBooksByUser(username));
-//        model.addAttribute("ticketUsers", umService.getTicketUsers());
-        return "list";
-    }
+//    @GetMapping(value = {"/list/user/{username}"})
+//    public String list(ModelMap model, @PathVariable("username") String username) {
+//        model.addAttribute("bookDatabase", bService.getBooksByUser(username));
+////        model.addAttribute("ticketUsers", umService.getTicketUsers());
+//        return "BooksList";
+//    }
     @GetMapping("/create")
     public ModelAndView create() {
         return new ModelAndView("add", "bookForm", new Form());

@@ -16,10 +16,16 @@ public class SecurityConfig {
             throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
+
                         .requestMatchers("/user/**").permitAll()
+                        .requestMatchers("/user/delete/**").hasRole("ADMIN")
+
                         .requestMatchers("/Books/*/delete/**").hasRole("ADMIN")
                         .requestMatchers("/Books/delete/**").hasRole("ADMIN")
-                        .requestMatchers("/Books/**").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/Books/home").hasAnyRole("ADMIN","USER")
+                        .requestMatchers("/Books/list").hasRole("ADMIN")
+                        .requestMatchers("/Books/list/user/**").hasRole("ADMIN")
+                        .requestMatchers("/Books/create").hasRole("ADMIN")
                         .anyRequest().permitAll()
                 )
                 .formLogin(form -> form

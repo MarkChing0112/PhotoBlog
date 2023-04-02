@@ -13,8 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 import java.io.IOException;
 
 @Controller
-@RequestMapping("/user")
-public class UserManagementController {
+@RequestMapping("/Admin")
+public class AdminController {
     @Resource
     UserManagementService umService;
     public static class Form {
@@ -47,12 +47,12 @@ public class UserManagementController {
     @GetMapping("/create")
     public ModelAndView create() {
 
-        return new ModelAndView("CreateUser", "ticketUser", new Form());
+        return new ModelAndView("addUser", "ticketUser", new UserManagementController.Form());
     }
     @PostMapping("/create")
-    public String create(Form form) throws IOException {
+    public String create(UserManagementController.Form form) throws IOException {
         umService.createTicketUser(form.getUsername(), form.getPassword(), form.getRoles());
-        return "redirect:/login";
+        return "redirect:/user/list";
     }
     @GetMapping({"", "/", "/list"})
     public String list(ModelMap model) {
@@ -65,4 +65,3 @@ public class UserManagementController {
         return "redirect:/user/list";
     }
 }
-

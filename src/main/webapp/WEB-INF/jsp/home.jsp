@@ -1,83 +1,102 @@
-<%--<!DOCTYPE html>--%>
-<%--<html lang="en" class="no-js">--%>
-<%--<head>--%>
-<%--    <meta charset="UTF-8" />--%>
-<%--    <meta http-equiv="X-UA-Compatible" content="IE=edge">--%>
-<%--    <meta name="viewport" content="width=device-width, initial-scale=1">--%>
-<%--    <title>Library</title>--%>
-<%--    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">--%>
-<%--    <link rel="stylesheet" type="text/css" href="../css/normalize.css" />--%>
-<%--    <link rel="stylesheet" type="text/css" href="../css/demo.css" />--%>
-<%--    <link rel="stylesheet" type="text/css" href="../css/component.css" />--%>
-<%--    <script>--%>
-<%--        document.documentElement.className = 'js';--%>
-<%--    </script>--%>
-<%--</head>--%>
-<%--<body class="demo-1">--%>
-<%--<svg class="hidden">--%>
-<%--    <defs>--%>
-<%--        <symbol id="icon-arrow" viewBox="0 0 24 24">--%>
-<%--            <title>arrow</title>--%>
-<%--            <polygon points="6.3,12.8 20.9,12.8 20.9,11.2 6.3,11.2 10.2,7.2 9,6 3.1,12 9,18 10.2,16.8 " />--%>
-<%--        </symbol>--%>
-<%--        <symbol id="icon-drop" viewBox="0 0 24 24">--%>
-<%--            <title>drop</title>--%>
-<%--            <path d="M12,21c-3.6,0-6.6-3-6.6-6.6C5.4,11,10.8,4,11.4,3.2C11.6,3.1,11.8,3,12,3s0.4,0.1,0.6,0.3c0.6,0.8,6.1,7.8,6.1,11.2C18.6,18.1,15.6,21,12,21zM12,4.8c-1.8,2.4-5.2,7.4-5.2,9.6c0,2.9,2.3,5.2,5.2,5.2s5.2-2.3,5.2-5.2C17.2,12.2,13.8,7.3,12,4.8z" />--%>
-<%--            <path d="M12,18.2c-0.4,0-0.7-0.3-0.7-0.7s0.3-0.7,0.7-0.7c1.3,0,2.4-1.1,2.4-2.4c0-0.4,0.3-0.7,0.7-0.7c0.4,0,0.7,0.3,0.7,0.7C15.8,16.5,14.1,18.2,12,18.2z" />--%>
-<%--        </symbol>--%>
-<%--    </defs>--%>
-<%--</svg>--%>
-<%--<main>--%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html lang="en">
 
-<%--    <!-- Initial markup -->--%>
-<%--    <div class="segmenter" style="background-image: url(../img/BG.jpg)"></div>--%>
-<%--    <h2 class="trigger-headline trigger-headline--hidden"><span>W</span><span>E</span><span>L</span><span>C</span><span>O</span><span>M</span><span>E</span></h2>--%>
-<%--    <div class="bottom-nav">--%>
-<%--        <button class="btn btn--trigger btn--hidden" onclick="DelayRedirect()" href="<c:url value="/login"/>">LOGIN</button>--%>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<%--        <div id="dvCountDown" style = "display:none">--%>
-<%--            You will be redirected after <span id = "lblCount"></span>&nbsp;seconds.--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</main>--%>
+    <title>Home</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
 
-<%--<script src="assets/js/anime.min.js"></script>--%>
-<%--<script src="assets/js/imagesloaded.pkgd.min.js"></script>--%>
-<%--<script src="assets/js/main.js"></script>--%>
-<%--<script>--%>
-<%--    (function() {--%>
-<%--        var headline = document.querySelector('.trigger-headline'),--%>
-<%--            trigger = document.querySelector('.btn--trigger'),--%>
-<%--            segmenter = new Segmenter(document.querySelector('.segmenter'), {--%>
-<%--                onReady: function() {--%>
-<%--                    trigger.classList.remove('btn--hidden');--%>
-<%--                    trigger.addEventListener('click', function() {--%>
-<%--                        segmenter.animate();--%>
-<%--                        headline.classList.remove('trigger-headline--hidden');--%>
-<%--                        headline.classList.remove('removeha')--%>
-<%--                        this.classList.add('btn--hidden');--%>
-<%--                    });--%>
-<%--                }--%>
-<%--            });--%>
-<%--    })();--%>
-<%--</script>--%>
-<%--<script type="text/javascript">--%>
-<%--    function DelayRedirect() {--%>
-<%--        var seconds = 3;--%>
-<%--        var dvCountDown = document.getElementById("dvCountDown");--%>
-<%--        var lblCount = document.getElementById("lblCount");--%>
-<%--        dvCountDown.style.display = "block";--%>
-<%--        lblCount.innerHTML = seconds;--%>
-<%--        setInterval(function () {--%>
-<%--            seconds--;--%>
-<%--            lblCount.innerHTML = seconds;--%>
-<%--            if (seconds == 0) {--%>
-<%--                dvCountDown.style.display = "none";--%>
-<%--                window.location = '/login';--%>
-<%--            }--%>
-<%--        }, 1000);--%>
-<%--    }--%>
-<%--</script>--%>
 
-<%--</body>--%>
-<%--</html>--%>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+<!-- ======= Header ======= -->
+<header id="header" class="d-flex align-items-center">
+    <div class="container d-flex align-items-center">
+
+        <h1 class="logo me-auto"><a href="/home">BookShop</a></h1>
+
+        <nav id="navbar" class="navbar">
+            <c:url var="logoutUrl"  value="/logout"/>
+            <form class="form-inline" class="class="btn btn-primary pull-right"" action="${logoutUrl} " method="post">
+            <input type="submit" value="Logout" />
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            </form>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+
+    </div>
+</header><!-- End Header -->
+
+<main id="main">
+
+    <section id="team" class="team section-bg">
+        <div class="container">
+            <c:choose>
+            <c:when test="${fn:length(bookDatabase) == 0}">
+                <i>There are no tickets in the system.</i>
+            </c:when>
+
+            <c:otherwise>
+            <div class="section-title">
+                <h2>Books</h2>
+                <p></p>
+            </div>
+
+            <div class="row">
+
+                <c:forEach items="${bookDatabase}" var="entry">
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                    <div class="member">
+                        <img src="data: <c:out value="${entry.attachments}"/>", alt="">
+                        <h4><c:out value="${entry.subject}"/></h4>
+                        <span> <c:out value="${entry.customerName}"/></span>
+
+                        <a class="btn btn-primary" role="button" href="<c:url value="/Books/view/${entry.id}"/>">
+                            Details
+                        </a>
+                    </div>
+                </div>
+                </c:forEach>
+            </div>
+            </c:otherwise>
+            </c:choose>
+        </div>
+    </section><!-- End Team Section -->
+
+
+</main><!-- End #main -->
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="assets/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

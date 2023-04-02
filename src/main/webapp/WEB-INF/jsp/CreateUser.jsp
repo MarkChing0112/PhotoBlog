@@ -29,7 +29,7 @@
             <form:input type="text" path="password"/><br/><br/>
             <form:input type="hidden" path="roles" value="ROLE_USER"/>
             <br/><br/>
-            <input type="submit" value="Add User" class="form-submit" />
+            <input type="submit" value="Create Account" class="form-submit" />
           </form:form>
         </div>
         <div class="signup-image">

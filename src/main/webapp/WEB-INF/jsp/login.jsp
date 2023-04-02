@@ -35,27 +35,13 @@
         <h5>Welcome </h5>
         <p>Type your's Account to watch more book. </a> Enjoy our website.</p>
 
-<%--<form action="/login" method="post">--%>
-<%--    <input type="text" name="username" id="username" placeholder="Username" required>--%>
-
-<%--    <input type="password" name="password" id="password" placeholder="Password" required>--%>
-<%--    <input type="checkbox" id="remember-me" name="remember-me"/>--%>
-<%--    <label for="remember-me">Remember me</label><br/><br/>--%>
-<%--    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
-<%--&lt;%&ndash;    <button type="submit" >Login</button>&ndash;%&gt;--%>
-<%--    <input type="submit" value="Log In"/>--%>
-<%--    <a type="button" href="<c:url value="/user/create"/>" href="register.html"> Register</a>--%>
-<%--</form>--%>
-
-
-
 <form action="login" method="POST">
     <label for="username">Username:</label><br/>
     <input type="text" id="username" name="username"/><br/><br/>
     <label for="password">Password:</label><br/>
     <input type="password" id="password" name="password"/><br/><br/>
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-    <input type="submit" value="Log In"/>
+    <input type="submit" value="Login"/>
     <input type="checkbox" id="remember-me" class="remember-me-btn" name="remember-me"/>
     <label for="remember-me" >Remember me</label><br/><br/>
     <a type="button" href="<c:url value="/user/create"/>">Create Account</a>

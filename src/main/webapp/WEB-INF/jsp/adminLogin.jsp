@@ -50,13 +50,15 @@
 </head>
 <body>
 <center> <h1> Admin Login  </h1> </center>
-<form action="/admin" method="post">
+<form action="/admin" method="POST">
     <div class="container">
-        <label>Username : </label>
+        <label for="username">Username : </label>
         <input type="text" placeholder="username" id="username" name="username" required>
-        <label>Password : </label>
+        <label for="password">Password : </label>
         <input type="password" placeholder="Password" id="password" name="password" required>
-        <button type="submit">Login</button>
+        <input type="submit" value="AdminLogin"/>
+        <input type="checkbox" id="remember-me" class="remember-me-btn" name="remember-me"/>
+        <label for="remember-me" >Remember me</label><br/><br/>
     </div>
 </form>
 </body>

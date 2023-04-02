@@ -10,7 +10,7 @@
     <nav class="navbar navbar-light bg-dark justify-content-between" style="background-color: rgb(46, 52, 63)">
         <a class="navbar-brand mb-0 h1" style="color: rgb(255, 255, 255)">Book Well</a>
         <c:url var="logoutUrl"  value="/logout"/>
-        <form class="form-inline" class="class="btn btn-primary pull-right"" action="${logoutUrl} " method="post">
+        <form class="form-inline" class="class="btn btn-primary pull-right" action="${logoutUrl} " method="post">
             <input type="submit" value="Logout" />
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
@@ -56,6 +56,7 @@
     <td> <a href="<c:url value="/Books/view/${entry.id}" />">
         <c:out value="${entry.subject}"/></a></td>
      <td>(customer: <c:out value="${entry.customerName}"/>)</td>
+
       <%--   Display Edit Button   --%>
 <td>
       <security:authorize access="hasRole('ADMIN') or
@@ -72,23 +73,6 @@
     </td>
 
 </tbody>
-    <table>
-        </div>
-    </div>
-</div>
-      <tr><th>Username</th><th>Password</th><th>Roles</th><th>Action</th></tr>
-      <c:forEach items="${ticketUsers}" var="user">z<tr>
-        <td>${user.username}</td>
-        <td>${fn:substringAfter(user.password, '{noop}')}</td>
-        <td>
-          <c:forEach items="${user.roles}" var="role" varStatus="status">
-            <c:if test="${!status.first}">, </c:if>
-            ${role.role}
-          </c:forEach>
-        </td>
-        <td>[<a href="<c:url value="/user/delete/${user.username}" />">Delete</a>]</td>
-      </tr></c:forEach>
-    </table>
   </c:otherwise>
 </c:choose>
 </body>
