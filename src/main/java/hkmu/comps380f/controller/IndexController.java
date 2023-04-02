@@ -14,8 +14,8 @@ public class IndexController {
         return "login";
     }
 
-    @GetMapping("/home")
-    public  String home(){return  "home";}
+//    @GetMapping("/home")
+//    public  String home(){return  "home";}
 
 }
 

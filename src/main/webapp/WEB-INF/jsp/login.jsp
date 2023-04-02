@@ -54,7 +54,6 @@
     <input type="text" id="username" name="username"/><br/><br/>
     <label for="password">Password:</label><br/>
     <input type="password" id="password" name="password"/><br/><br/>
-
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <input type="submit" value="Log In"/>
     <input type="checkbox" id="remember-me" class="remember-me-btn" name="remember-me"/>

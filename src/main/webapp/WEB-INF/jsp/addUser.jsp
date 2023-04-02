@@ -34,7 +34,7 @@
         </div>
         <div class="signup-image">
           <figure><img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80" alt="sing up image"></figure>
-          <a href="login.html" class="signup-image-link">I am already member</a>
+          <a href="<c:url value="/login"/>" class="signup-image-link">I am already member</a>
         </div>
       </div>
     </div>
