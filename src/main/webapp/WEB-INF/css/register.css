@@ -212,7 +212,7 @@ input {
     padding: 6px 30px;
     font-family: Poppins;
     box-sizing: border-box; }
-input::-webkit-input-placeholder {
+input::-webkit-input-placeholder  {
     color: #999; }
 input::-moz-placeholder {
     color: #999; }
@@ -284,16 +284,16 @@ input[type=checkbox]:not(old):checked + label > span:before {
     display: inline-block;
     width: auto; }
 
-label {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    color: #222; }
+/*label {*/
+/*    position: absolute;*/
+/*    left: 0;*/
+/*    top: 50%;*/
+/*    transform: translateY(-50%);*/
+/*    -moz-transform: translateY(-50%);*/
+/*    -webkit-transform: translateY(-50%);*/
+/*    -o-transform: translateY(-50%);*/
+/*    -ms-transform: translateY(-50%);*/
+/*    color: #222; }*/
 
 .label-has-error {
     top: 22%; }
