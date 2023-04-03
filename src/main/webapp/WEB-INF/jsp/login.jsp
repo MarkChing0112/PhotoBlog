@@ -3,6 +3,7 @@
 <head>
     <title>BookWell Login</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"><link rel="stylesheet" href="./style.css">
 <%--    <link rel="stylesheet" href="/css/signin.css" type="text/css">--%>
     <style><%@include file="../css/signin.css"%></style>
@@ -41,10 +42,14 @@
     <label for="password">Password:</label><br/>
     <input type="password" id="password" name="password"/><br/><br/>
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-    <input type="submit" value="Login"/>
-    <input type="checkbox" id="remember-me" class="remember-me-btn" name="remember-me"/>
+    <input class="loginBtn" type="submit" value="Login" class="col-1"/>
+    <div class="row">
+        <div class="col">
+    <input class="col-1 " type="checkbox" id="remember-me" class="remember-me-btn" name="remember-me"/>
     <label for="remember-me" >Remember me</label><br/><br/>
-    <a type="button" href="<c:url value="/user/create"/>">Create Account</a>
+        </div>
+    </div>
+    <a type="button" href="<c:url value="/user/create"/>">Sign Up</a>
 </form>
 </body>
 </html>
