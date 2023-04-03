@@ -185,3 +185,12 @@ label span.text-checkbox {
 label input[type="checkbox"] {
   display: none;
 }
+.remeberMeCheckBox{
+  margin-bottom: 10px;
+}
+
+.remeberMeCheckBox label{
+  display: inline-block;
+  width: 150px;
+  text-align: right;
+}

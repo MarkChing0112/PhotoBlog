@@ -37,17 +37,16 @@
         <p>Type your's Account to watch more book. </a> Enjoy our website.</p>
 
 <form action="login" method="POST">
-    <label for="username">Username:</label><br/>
-    <input type="text" id="username" name="username"/><br/><br/>
-    <label for="password">Password:</label><br/>
-    <input type="password" id="password" name="password"/><br/><br/>
+<%--    <label for="username">Username:</label><br/>--%>
+    <input placeholder="Username"  type="text" id="username" name="username"/><br/><br/>
+<%--    <label for="password">Password:</label><br/>--%>
+    <input placeholder="Password"  type="password" id="password" name="password"/><br/><br/>
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <input class="loginBtn" type="submit" value="Login" class="col-1"/>
-    <div class="row">
-        <div class="col">
-    <input class="col-1 " type="checkbox" id="remember-me" class="remember-me-btn" name="remember-me"/>
-    <label for="remember-me" >Remember me</label><br/><br/>
-        </div>
+    <div class="remeberMeCheckBox">
+        <label for="remember-me" >Remember me</label>
+    <input  type="checkbox" id="remember-me" class="remember-me-btn" name="remember-me"/>
+
     </div>
     <a type="button" href="<c:url value="/user/create"/>">Sign Up</a>
 </form>
