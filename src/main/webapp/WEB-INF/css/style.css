@@ -177,22 +177,29 @@ h6 {
   transition: 0.3s;
 }
 
+
 .navbar a i,
 .navbar a:focus i {
   font-size: 12px;
   line-height: 0;
   margin-left: 5px;
 }
-
+.navbar .logoutBtn,
 .navbar a:hover,
 .navbar .active,
 .navbar .active:focus,
 .navbar li:hover>a {
   color: #5cb874;
 }
+/*.navbar .logoutBtn{*/
+/*  background-color:white;*/
+/*  border:0px;*/
+/*}*/
+
 
 .navbar .getstarted,
 .navbar .getstarted:focus {
+  background-color: white;
   color: #5cb874;
   padding: 8px 25px;
   margin-left: 30px;
@@ -202,6 +209,8 @@ h6 {
   font-size: 14px;
 }
 
+/*.navbar .logoutBtn:hover,*/
+/*.navbar .logoutBtn:focus:hover*/
 .navbar .getstarted:hover,
 .navbar .getstarted:focus:hover {
   background: #5cb874;

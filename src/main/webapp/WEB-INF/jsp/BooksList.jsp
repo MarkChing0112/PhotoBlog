@@ -10,8 +10,8 @@
     <nav class="navbar navbar-light bg-dark justify-content-between" style="background-color: rgb(46, 52, 63)">
         <a class="navbar-brand mb-0 h1" style="color: rgb(255, 255, 255)">Book Well</a>
         <c:url var="logoutUrl"  value="/logout"/>
-        <form class="form-inline" class="class="btn btn-primary pull-right" action="${logoutUrl} " method="post">
-            <input type="submit" value="Logout" />
+        <form   action="${logoutUrl} " method="post">
+            <input class="getstarted scrollto" type="submit" value="Logout" />
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
 
@@ -22,10 +22,12 @@
 
 
 <h1>Book Well Admin System</h1>
+
+
 <security:authorize access="hasRole('ADMIN')">
-  <a href="<c:url value="/user" />">Manage User Accounts</a><br /><br />
+    <a class="btn btn-success " href="<c:url value="/user" />"> <i class="bi bi-person"></i> Manage User Accounts</a><br/><br/>
 </security:authorize>
-<a href="<c:url value="/Books/create" />" class="btn btn-success btn-light" style="color: rgb(248, 248, 248); background-color: green;" role="button"><span class="bi bi-file-plus"></span></a><br/><br/>
+<a href="<c:url value="/Books/create" />" class="btn btn-success btn-light" style="color: rgb(248, 248, 248); background-color: green;" role="button"><span class="bi bi-file-plus"></span> Create Book</a><br/><br/>
 <c:choose>
   <c:when test="${fn:length(bookDatabase) == 0}">
     <i>There are no tickets in the system.</i>
@@ -43,7 +45,7 @@
                     <th scope="col">User_Name</th>
 
                     <th scope="col">Action</th>
-                    <th ><a href="/create" class="btn btn-success btn-light" style="color: rgb(248, 248, 248); background-color: green;" role="button"><span class="bi bi-file-plus"></span></a></th>
+                    
                 </tr>
                 </thead>
                 <!--Body Lsit of Book records-->
@@ -67,7 +69,7 @@
 
 <%--      Display Delete Button--%>
     <security:authorize access="principal.username=='${entry.customerName}'">
-        [<a class="btn btn-danger" href="<c:url value="/Books/delete/${entry.id}" />"> <span class="bi bi-trash"></span>Delete</a>]<br/><br/>
+        <a class="btn btn-danger" href="<c:url value="/Books/delete/${entry.id}" />"> <span class="bi bi-trash"></span>Delete</a><br/><br/>
     </security:authorize>
     </c:forEach>
     </td>

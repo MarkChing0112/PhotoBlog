@@ -15,15 +15,19 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+<%--    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">--%>
+<%--    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">--%>
+<%--    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">--%>
+<%--    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">--%>
+    <style><%@include file="../css/bootstrap.min.css"%></style>
+<%--    <style><%@include file="../css/style.css"%></style>--%>
+<%--    <style><%@include file="../css/style.css"%></style>--%>
+<%--    <style><%@include file="../css/style.css"%></style>--%>
+<%--    <style><%@include file="../css/style.css"%></style>--%>
+<%--    <style><%@include file="../css/style.css"%></style>--%>
+    <style><%@include file="../css/style.css"%></style>
 
-
-    <link href="css/style.css" rel="stylesheet">
 
 </head>
 
@@ -36,8 +40,8 @@
 
         <nav id="navbar" class="navbar">
             <c:url var="logoutUrl"  value="/logout"/>
-            <form class="form-inline" class="class="btn btn-primary pull-right"" action="${logoutUrl} " method="post">
-            <input type="submit" value="Logout" />
+            <form   action="${logoutUrl} " method="post">
+            <input class="getstarted scrollto" type="submit" value="Logout" />
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form>
             <i class="bi bi-list mobile-nav-toggle"></i>
