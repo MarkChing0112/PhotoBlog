@@ -40,6 +40,6 @@ Book updated: <fmt:formatDate value="${book.updateTime}"
         </security:authorize>
     </c:forEach><br/><br/>
 </c:if>
-<a href="<c:url value="/Books" />">Return to list tickets</a>
+<a href="<c:url value="/Books/list" />">Return to list tickets</a>
 </body>
 </html>

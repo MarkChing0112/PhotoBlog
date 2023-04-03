@@ -36,14 +36,18 @@
 <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center">
 
-        <h1 class="logo me-auto"><a href="/home">BookShop</a></h1>
+        <h1 class="logo me-auto"><a>BookShop</a></h1>
 
         <nav id="navbar" class="navbar">
             <c:url var="logoutUrl"  value="/logout"/>
+            <security:authorize access="hasRole('ADMIN') ">
+                <a class="getstarted scrollto" role="button" href="/BookShop/Books/list" /> Manage</a>
+            </security:authorize>
             <form   action="${logoutUrl} " method="post">
             <input class="getstarted scrollto" type="submit" value="Logout" />
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form>
+
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>
 

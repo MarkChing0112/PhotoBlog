@@ -20,7 +20,7 @@
   <input type="file" name="attachments" multiple="multiple"/><br/><br/>
   <input type="submit" value="Save"/><br/><br/>
 </form:form>
-<a href="<c:url value="/Books" />">Return to list tickets</a>
+<a href="<c:url value="/Books/list" />">Return to list tickets</a>
 </body>
 </html>
 

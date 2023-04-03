@@ -33,7 +33,6 @@ public class BookController {
     @GetMapping(value = {"","/home"})
     public String home(ModelMap model){
         model.addAttribute("bookDatabase", bService.getBooks());
-
         return  "home";
     }
     @GetMapping(value = { "/list"})
