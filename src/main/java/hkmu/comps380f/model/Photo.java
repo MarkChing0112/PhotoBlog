@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.UUID;
 
 @Entity
-public class Attachment {
+public class Photo {
     @Id
     @GeneratedValue
     @ColumnDefault("random_uuid()")

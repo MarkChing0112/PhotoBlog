@@ -1,8 +1,8 @@
 package hkmu.comps380f.dao;
 
-import hkmu.comps380f.exception.AttachmentNotFound;
+import hkmu.comps380f.exception.PhotoNotFound;
 import hkmu.comps380f.exception.BookNotFound;
-import hkmu.comps380f.model.Attachment;
+import hkmu.comps380f.model.Photo;
 import hkmu.comps380f.model.Book;
 import hkmu.comps380f.model.TicketUser;
 import jakarta.annotation.Resource;
@@ -22,7 +22,7 @@ public class BookService {
     private BookUserRepository buRepo;
 
     @Resource
-    private AttachmentRepository aRepo;
+    private PhotoRepository pRepo;
 
     @Transactional
     public List<Book> getBooks() {
@@ -43,17 +43,17 @@ public class BookService {
     }
 
     @Transactional
-    public Attachment getAttachment(long bookId, UUID attachmentId)
-            throws BookNotFound, AttachmentNotFound {
+    public Photo getPhoto(long bookId, UUID photoId)
+            throws BookNotFound, PhotoNotFound {
         Book book = bRepo.findById(bookId).orElse(null);
         if (book == null) {
             throw new BookNotFound(bookId);
         }
-        Attachment attachment = aRepo.findById(attachmentId).orElse(null);
-        if (attachment == null) {
-            throw new AttachmentNotFound(attachmentId);
+        Photo photo = pRepo.findById(photoId).orElse(null);
+        if (photo == null) {
+            throw new PhotoNotFound(photoId);
         }
-        return attachment;
+        return photo;
     }
 
     @Transactional
@@ -66,25 +66,25 @@ public class BookService {
     }
 
     @Transactional
-    public void deleteAttachment(long bookId, UUID attachmentId)
-            throws BookNotFound, AttachmentNotFound {
+    public void deleteBook(long bookId, UUID photoId)
+            throws BookNotFound, PhotoNotFound {
         Book book = bRepo.findById(bookId).orElse(null);
         if (book == null) {
             throw new BookNotFound(bookId);
         }
-        for (Attachment attachment : book.getAttachments()) {
-            if (attachment.getId().equals(attachmentId)) {
-                book.deleteAttachment(attachment);
+        for (Photo photo : book.getPhotos()) {
+            if (photo.getId().equals(photoId)) {
+                book.deletePhoto(photo);
                 bRepo.save(book);
                 return;
             }
         }
-        throw new AttachmentNotFound(attachmentId);
+        throw new PhotoNotFound(photoId);
     }
 
     @Transactional
     public long createBook(String customerName, String subject,
-                             String body, List<MultipartFile> attachments)
+                             String body, List<MultipartFile> photos)
             throws IOException {
         TicketUser customer = buRepo.findById(customerName).orElse(null);
         if (customer == null){
@@ -94,16 +94,16 @@ public class BookService {
         book.setCustomer(customer);
         book.setSubject(subject);
         book.setBody(body);
-        for (MultipartFile filePart : attachments) {
-            Attachment attachment = new Attachment();
-            attachment.setName(filePart.getOriginalFilename());
-            attachment.setMimeContentType(filePart.getContentType());
-            attachment.setContents(filePart.getBytes());
-            attachment.setBook(book);
-            if (attachment.getName() != null && attachment.getName().length() > 0
-                    && attachment.getContents() != null
-                    && attachment.getContents().length > 0) {
-                book.getAttachments().add(attachment);
+        for (MultipartFile filePart : photos) {
+            Photo photo = new Photo();
+            photo.setName(filePart.getOriginalFilename());
+            photo.setMimeContentType(filePart.getContentType());
+            photo.setContents(filePart.getBytes());
+            photo.setBook(book);
+            if (photo.getName() != null && photo.getName().length() > 0
+                    && photo.getContents() != null
+                    && photo.getContents().length > 0) {
+                book.getPhotos().add(photo);
             }
         }
         Book savedBook = bRepo.save(book);
@@ -113,7 +113,7 @@ public class BookService {
 
     @Transactional
     public void updateBook(long id, String subject,
-                             String body, List<MultipartFile> attachments)
+                            String body, List<MultipartFile> photos)
             throws IOException, BookNotFound {
         Book updatedBook = bRepo.findById(id).orElse(null);
         if (updatedBook == null) {
@@ -121,16 +121,16 @@ public class BookService {
         }
         updatedBook.setSubject(subject);
         updatedBook.setBody(body);
-        for (MultipartFile filePart : attachments) {
-            Attachment attachment = new Attachment();
-            attachment.setName(filePart.getOriginalFilename());
-            attachment.setMimeContentType(filePart.getContentType());
-            attachment.setContents(filePart.getBytes());
-            attachment.setBook(updatedBook);
-            if (attachment.getName() != null && attachment.getName().length() > 0
-                    && attachment.getContents() != null
-                    && attachment.getContents().length > 0) {
-                updatedBook.getAttachments().add(attachment);
+        for (MultipartFile filePart : photos) {
+            Photo photo = new Photo();
+            photo.setName(filePart.getOriginalFilename());
+            photo.setMimeContentType(filePart.getContentType());
+            photo.setContents(filePart.getBytes());
+            photo.setBook(updatedBook);
+            if (photo.getName() != null && photo.getName().length() > 0
+                    && photo.getContents() != null
+                    && photo.getContents().length > 0) {
+                updatedBook.getPhotos().add(photo);
             }
         }
         bRepo.save(updatedBook);

@@ -2,9 +2,9 @@ package hkmu.comps380f.controller;
 
 import hkmu.comps380f.dao.BookService;
 import hkmu.comps380f.dao.UserManagementService;
-import hkmu.comps380f.exception.AttachmentNotFound;
+import hkmu.comps380f.exception.PhotoNotFound;
 import hkmu.comps380f.exception.BookNotFound;
-import hkmu.comps380f.model.Attachment;
+import hkmu.comps380f.model.Photo;
 import hkmu.comps380f.model.Book;
 import hkmu.comps380f.view.DownloadingView;
 import jakarta.annotation.Resource;
@@ -55,13 +55,13 @@ public class BookController {
     @PostMapping("/create")
     public View create(Form form, Principal principal) throws IOException {
         long bookId = bService.createBook(principal.getName(),
-                form.getSubject(), form.getBody(), form.getAttachments());
+                form.getSubject(), form.getBody(), form.getPhotos());
         return new RedirectView("/Books/view/" + bookId, true);
     }
     public static class Form {
         private String subject;
         private String body;
-        private List<MultipartFile> attachments;
+        private List<MultipartFile> photos;
         // Getters and Setters of customerName, subject, body, attachments
 
         public String getSubject() {
@@ -80,12 +80,12 @@ public class BookController {
             this.body = body;
         }
 
-        public List<MultipartFile> getAttachments() {
-            return attachments;
+        public List<MultipartFile> getPhotos() {
+            return photos;
         }
 
-        public void setAttachments(List<MultipartFile> attachments) {
-            this.attachments = attachments;
+        public void setPhotos(List<MultipartFile> photos) {
+            this.photos = photos;
         }
     }
 
@@ -101,13 +101,13 @@ public class BookController {
         return "PhotoDetail";
     }
 
-    @GetMapping("/{bookId}/attachment/{attachment:.+}")
+    @GetMapping("/{bookId}/photo/{photo:.+}")
     public View download(@PathVariable("bookId") long bookId,
-                         @PathVariable("attachment") UUID attachmentId)
-            throws BookNotFound, AttachmentNotFound {
-        Attachment attachment = bService.getAttachment(bookId, attachmentId);
-        return new DownloadingView(attachment.getName(),
-                    attachment.getMimeContentType(), attachment.getContents());
+                         @PathVariable("photo") UUID photoId)
+            throws BookNotFound, PhotoNotFound {
+        Photo photo = bService.getPhoto(bookId, photoId);
+        return new DownloadingView(photo.getName(),
+                    photo.getMimeContentType(), photo.getContents());
     }
 
     @GetMapping("/delete/{bookId}")
@@ -117,15 +117,15 @@ public class BookController {
         return "redirect:/Books/list";
     }
 
-    @GetMapping("/{bookId}/delete/{attachment:.+}")
+    @GetMapping("/{bookId}/delete/{photo:.+}")
     public String deleteAttachment(@PathVariable("bookId") long bookId,
-                                   @PathVariable("attachment") UUID attachmentId)
-            throws BookNotFound, AttachmentNotFound {
-        bService.deleteAttachment(bookId, attachmentId);
+                                   @PathVariable("photo") UUID photoId)
+            throws BookNotFound, PhotoNotFound {
+        bService.deleteBook(bookId, photoId);
         return "redirect:/Books/view/" + bookId;
     }
 
-    @ExceptionHandler({BookNotFound.class, AttachmentNotFound.class})
+    @ExceptionHandler({BookNotFound.class, PhotoNotFound.class})
     public ModelAndView error(Exception e) {
         return new ModelAndView("error", "message", e.getMessage());
     }
@@ -159,7 +159,7 @@ public class BookController {
             return "redirect:/Books/list";
         }
         bService.updateBook(bookId, form.getSubject(),
-                form.getBody(), form.getAttachments());
+                form.getBody(), form.getPhotos());
         return "redirect:/Books/view/" + bookId;
     }
 

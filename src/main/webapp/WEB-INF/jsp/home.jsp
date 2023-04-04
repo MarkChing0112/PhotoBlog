@@ -74,11 +74,11 @@
                 <c:forEach items="${bookDatabase}" var="entry">
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                     <div class="member">
-                        <c:if test="${!empty entry.attachments}">
-                        <c:forEach items="${entry.attachments}" var="attachment" varStatus="status">
+                        <c:if test="${!empty entry.photos}">
+                        <c:forEach items="${entry.photos}" var="photo" varStatus="status">
                             <c:if test="${!status.first}">, </c:if>
                             <%--Image of User photos    --%>
-                            <img src="<c:url value="/Books/${entry.id}/attachment/${attachment.id}" />">
+                            <img src="<c:url value="/Books/${entry.id}/photo/${photo.id}" />">
                         </c:forEach>
                         </c:if>
                         <h4><c:out value="${entry.subject}"/></h4>

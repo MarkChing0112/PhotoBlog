@@ -16,8 +16,8 @@
   <form:input type="text" path="subject" /><br/><br/>
   <form:label path="body">Body</form:label><br/>
   <form:textarea path="body" rows="5" cols="30" /><br/><br/>
-  <b>Add more attachments</b><br />
-  <input type="file" name="attachments" multiple="multiple"/><br/><br/>
+  <b>Add more photos</b><br />
+  <input type="file" name="photos" multiple="multiple"/><br/><br/>
   <input type="submit" value="Save"/><br/><br/>
 </form:form>
 <a href="<c:url value="/Books/list" />">Return to list tickets</a>

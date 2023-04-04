@@ -25,18 +25,18 @@ Book updated: <fmt:formatDate value="${book.updateTime}"
                                 pattern="EEE, d MMM yyyy HH:mm:ss Z"/><br/><br/>
 <c:out value="${book.body}"/><br/><br/>
 
-<c:if test="${!empty book.attachments}">
+<c:if test="${!empty book.photos}">
     Attachments:
-    <c:forEach items="${book.attachments}" var="attachment" varStatus="status">
+    <c:forEach items="${book.photos}" var="photo" varStatus="status">
         <c:if test="${!status.first}">, </c:if>
 
     <%--Image of User photos    --%>
-        <img src="<c:url value="/Books/${bookId}/attachment/${attachment.id}" />">
+        <img src="<c:url value="/Books/${bookId}/photo/${photo.id}" />">
 
         <%-- <c:out value="${attachment.name}"/>--%>
 
         <security:authorize access="principal.username=='${book.customerName}'">
-        [<a href="<c:url value="/Books/${bookId}/delete/${attachment.id}" />">Delete</a>]
+        [<a href="<c:url value="/Books/${bookId}/delete/${photo.id}" />">Delete</a>]
         </security:authorize>
     </c:forEach><br/><br/>
 </c:if>

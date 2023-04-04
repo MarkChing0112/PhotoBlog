@@ -1,4 +1,4 @@
-drop table if exists attachment;
+drop table if exists Photo;
 drop table if exists book;
 drop table if exists user_roles;
 drop table if exists users;
@@ -10,7 +10,7 @@ create table if not exists book (
     update_time timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(),
     primary key (id)
 );
-create table if not exists attachment (
+create table if not exists Photo (
     id uuid default random_uuid() not null,
     content blob, content_type varchar(255),
     filename varchar(255), book_id bigint,

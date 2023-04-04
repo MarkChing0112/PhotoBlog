@@ -7,7 +7,6 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -33,7 +32,7 @@ public class Book {
     @OneToMany(mappedBy = "book", fetch = FetchType.EAGER,
             cascade = CascadeType.ALL, orphanRemoval = true)
     @Fetch(FetchMode.SUBSELECT)
-    private List<Attachment> attachments = new ArrayList<>();
+    private List<Photo> photos = new ArrayList<>();
 
     // getters and setters of all properties
     public long getId() {
@@ -68,17 +67,17 @@ public class Book {
         this.body = body;
     }
 
-    public List<Attachment> getAttachments() {
-        return attachments;
+    public List<Photo> getPhotos() {
+        return photos;
     }
 
-    public void setAttachments(List<Attachment> attachments) {
-        this.attachments = attachments;
+    public void setPhotos(List<Photo> photos) {
+        this.photos = photos;
     }
 
-    public void deleteAttachment(Attachment attachment) {
-        attachment.setBook(null);
-        this.attachments.remove(attachment);
+    public void deletePhoto(Photo photo) {
+        photo.setBook(null);
+        this.photos.remove(photo);
     }
 
     public TicketUser getCustomer() {
