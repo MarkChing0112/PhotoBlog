@@ -14,6 +14,9 @@ public class TicketUser {
     @Id
     private String username;
     private String password;
+
+    private String description;
+
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER,
             cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserRole> roles = new ArrayList<>();
@@ -85,6 +88,14 @@ public class TicketUser {
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
 
