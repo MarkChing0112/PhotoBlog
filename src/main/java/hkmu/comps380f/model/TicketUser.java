@@ -15,7 +15,7 @@ public class TicketUser {
     private String username;
     private String password;
 
-    private String description;
+//    private String description;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER,
             cascade = CascadeType.ALL, orphanRemoval = true)
@@ -24,12 +24,10 @@ public class TicketUser {
             cascade = CascadeType.ALL, orphanRemoval = true)
 
     private List<Book> books = new ArrayList<>();
-    @OneToMany(mappedBy = "customers", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Comment> comments = new ArrayList<>();
+//    @OneToMany(mappedBy = "customers", fetch = FetchType.LAZY,
+//            cascade = CascadeType.ALL, orphanRemoval = true)
     @CreationTimestamp
     private Date createTime;
-
     @UpdateTimestamp
     private Date updateTime;
 
@@ -82,20 +80,12 @@ public class TicketUser {
         this.createTime = createTime;
     }
 
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
+//    public String getDescription() {
+//        return description;
+//    }
+//
+//    public void setDescription(String description) {
+//        this.description = description;
+//    }
 }
 
