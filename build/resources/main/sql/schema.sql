@@ -45,6 +45,5 @@ create table if not exists comment (
             create_time timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(),
             update_time timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(),
             PRIMARY KEY (id),
-            FOREIGN KEY (username) REFERENCES users(username),
             FOREIGN KEY (bid) REFERENCES book
 );

@@ -1,9 +1,12 @@
 package hkmu.comps380f.controller;
 
 import hkmu.comps380f.dao.BookService;
+import hkmu.comps380f.dao.CommentService;
 import hkmu.comps380f.dao.UserManagementService;
+import hkmu.comps380f.exception.CommentNotFound;
 import hkmu.comps380f.exception.PhotoNotFound;
 import hkmu.comps380f.exception.BookNotFound;
+import hkmu.comps380f.model.Comment;
 import hkmu.comps380f.model.Photo;
 import hkmu.comps380f.model.Book;
 import hkmu.comps380f.view.DownloadingView;
@@ -16,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
+import org.yaml.snakeyaml.tokens.CommentToken;
 
 import java.io.IOException;
 import java.security.Principal;
@@ -28,6 +32,7 @@ public class BookController {
 
     @Resource
     private BookService bService;
+    private CommentService cService;
     UserManagementService umService;
     // Controller methods, Form-backing object, ...
     @GetMapping(value = {"","/home"})
@@ -162,6 +167,18 @@ public class BookController {
                 form.getBody(), form.getPhotos());
         return "redirect:/Books/view/" + bookId;
     }
+
+    @GetMapping("/detail/{bookId}")
+    public String detail(@PathVariable("bookId") long bookId,
+                       ModelMap model)
+        throws CommentNotFound {
+        Book book = bService.getBook(bookId);
+        model.addAttribute("bookId", bookId);
+        model.addAttribute("book", book);
+        model.addAttribute("CommentDatabase", cService.getComments());
+        return "PhotoDetail-user.jsp";
+    }
+
 
 }
 

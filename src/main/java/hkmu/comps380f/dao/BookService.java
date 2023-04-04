@@ -20,7 +20,6 @@ public class BookService {
     private BookRepository bRepo;
     @Resource
     private BookUserRepository buRepo;
-
     @Resource
     private PhotoRepository pRepo;
 

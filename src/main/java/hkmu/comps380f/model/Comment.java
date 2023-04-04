@@ -1,33 +1,34 @@
 package hkmu.comps380f.model;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.*;
 
 import java.util.Date;
+import java.util.UUID;
 
+@Entity
 public class Comment {
+    @Id
+    @GeneratedValue
+    @ColumnDefault("random_uuid()")
+    private UUID id;
     @Column(name = "name", insertable=false, updatable=false)
     private String userName;
     @ManyToOne
     @JoinColumn(name = "name")
-    private TicketUser customer;
+    private TicketUser customers;
     @CreationTimestamp
     private Date createTime;
 
     @UpdateTimestamp
     private Date updateTime;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
     @Column(name = "Book_id", insertable=false, updatable=false)
     private long bid;
 
     @ManyToOne
     @JoinColumn(name = "book_id")
     private Book book;
-    @OneToMany
+    
     private String body;
 
     public String getUserName() {
@@ -39,11 +40,11 @@ public class Comment {
     }
 
     public TicketUser getCustomer() {
-        return customer;
+        return customers;
     }
 
-    public void setCustomer(TicketUser customer) {
-        this.customer = customer;
+    public void setCustomer(TicketUser customers) {
+        this.customers = customers;
     }
 
     public Date getCreateTime() {
@@ -62,11 +63,11 @@ public class Comment {
         this.updateTime = updateTime;
     }
 
-    public long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
