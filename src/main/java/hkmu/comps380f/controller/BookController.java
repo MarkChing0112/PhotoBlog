@@ -98,7 +98,7 @@ public class BookController {
         Book book = bService.getBook(bookId);
         model.addAttribute("bookId", bookId);
         model.addAttribute("book", book);
-        return "Detail";
+        return "PhotoDetail";
     }
 
     @GetMapping("/{bookId}/attachment/{attachment:.+}")
