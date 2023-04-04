@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class UserManagementService {
     @Resource
-    private TicketUserRepository tuRepo;
+    private BookUserRepository tuRepo;
 
     @Transactional
     public void createTicketUser(String username, String password, String[] roles) {

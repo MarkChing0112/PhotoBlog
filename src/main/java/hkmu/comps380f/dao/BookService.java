@@ -17,25 +17,25 @@ import java.util.UUID;
 @Service
 public class BookService {
     @Resource
-    private BookRepository tRepo;
+    private BookRepository bRepo;
     @Resource
-    private TicketUserRepository tuRepo;
+    private BookUserRepository buRepo;
 
     @Resource
     private AttachmentRepository aRepo;
 
     @Transactional
     public List<Book> getBooks() {
-        return tRepo.findAll();
+        return bRepo.findAll();
     }
     @Transactional
     public List<Book> getBooksByUser(String username){
-        return tRepo.findBooksByCustomerName(username);
+        return bRepo.findBooksByCustomerName(username);
     }
     @Transactional
     public Book getBook(long id)
             throws BookNotFound {
-        Book book = tRepo.findById(id).orElse(null);
+        Book book = bRepo.findById(id).orElse(null);
         if (book == null) {
             throw new BookNotFound(id);
         }
@@ -45,7 +45,7 @@ public class BookService {
     @Transactional
     public Attachment getAttachment(long bookId, UUID attachmentId)
             throws BookNotFound, AttachmentNotFound {
-        Book book = tRepo.findById(bookId).orElse(null);
+        Book book = bRepo.findById(bookId).orElse(null);
         if (book == null) {
             throw new BookNotFound(bookId);
         }
@@ -58,24 +58,24 @@ public class BookService {
 
     @Transactional
     public void delete(long id) throws BookNotFound {
-        Book deletedBook = tRepo.findById(id).orElse(null);
+        Book deletedBook = bRepo.findById(id).orElse(null);
         if (deletedBook == null) {
             throw new BookNotFound(id);
         }
-        tRepo.delete(deletedBook);
+        bRepo.delete(deletedBook);
     }
 
     @Transactional
     public void deleteAttachment(long bookId, UUID attachmentId)
             throws BookNotFound, AttachmentNotFound {
-        Book book = tRepo.findById(bookId).orElse(null);
+        Book book = bRepo.findById(bookId).orElse(null);
         if (book == null) {
             throw new BookNotFound(bookId);
         }
         for (Attachment attachment : book.getAttachments()) {
             if (attachment.getId().equals(attachmentId)) {
                 book.deleteAttachment(attachment);
-                tRepo.save(book);
+                bRepo.save(book);
                 return;
             }
         }
@@ -86,7 +86,7 @@ public class BookService {
     public long createBook(String customerName, String subject,
                              String body, List<MultipartFile> attachments)
             throws IOException {
-        TicketUser customer = tuRepo.findById(customerName).orElse(null);
+        TicketUser customer = buRepo.findById(customerName).orElse(null);
         if (customer == null){
             throw new RuntimeException("User " + customerName + " not found.");
         }
@@ -106,7 +106,7 @@ public class BookService {
                 book.getAttachments().add(attachment);
             }
         }
-        Book savedBook = tRepo.save(book);
+        Book savedBook = bRepo.save(book);
         customer.getBooks().add(savedBook);
         return savedBook.getId();
     }
@@ -115,7 +115,7 @@ public class BookService {
     public void updateBook(long id, String subject,
                              String body, List<MultipartFile> attachments)
             throws IOException, BookNotFound {
-        Book updatedBook = tRepo.findById(id).orElse(null);
+        Book updatedBook = bRepo.findById(id).orElse(null);
         if (updatedBook == null) {
             throw new BookNotFound(id);
         }
@@ -133,7 +133,7 @@ public class BookService {
                 updatedBook.getAttachments().add(attachment);
             }
         }
-        tRepo.save(updatedBook);
+        bRepo.save(updatedBook);
     }
 }
 

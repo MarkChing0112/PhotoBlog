@@ -49,7 +49,7 @@ public class BookController {
 //    }
     @GetMapping("/create")
     public ModelAndView create() {
-        return new ModelAndView("add", "bookForm", new Form());
+        return new ModelAndView("CreateBook", "bookForm", new Form());
     }
 
     @PostMapping("/create")
@@ -98,7 +98,7 @@ public class BookController {
         Book book = bService.getBook(bookId);
         model.addAttribute("bookId", bookId);
         model.addAttribute("book", book);
-        return "view";
+        return "Detail";
     }
 
     @GetMapping("/{bookId}/attachment/{attachment:.+}")
@@ -140,7 +140,7 @@ public class BookController {
                 && !principal.getName().equals(book.getCustomerName()))) {
             return new ModelAndView(new RedirectView("/Books/list", true));
         }
-        ModelAndView modelAndView = new ModelAndView("edit");
+        ModelAndView modelAndView = new ModelAndView("EditBook");
         modelAndView.addObject("book", book);
         Form bookForm = new Form();
         bookForm.setSubject(book.getSubject());

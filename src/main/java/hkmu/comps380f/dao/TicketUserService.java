@@ -17,7 +17,7 @@ import java.util.List;
 @Service
 public class TicketUserService implements UserDetailsService {
     @Resource
-    TicketUserRepository ticketUserRepo;
+    BookUserRepository ticketUserRepo;
     @Override
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {

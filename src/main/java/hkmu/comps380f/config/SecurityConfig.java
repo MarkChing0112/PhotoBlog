@@ -24,7 +24,7 @@ public class SecurityConfig {
                         .requestMatchers("/Books/delete/**").hasRole("ADMIN")
                         .requestMatchers("/Books/home").hasAnyRole("ADMIN","USER")
                         .requestMatchers("/Books/list").hasRole("ADMIN")
-                        .requestMatchers("/Books/list/user/**").hasRole("ADMIN")
+//                        .requestMatchers("/Books/list/user/**").hasRole("ADMIN")
                         .requestMatchers("/Books/create").hasRole("ADMIN")
                         .anyRequest().permitAll()
                 )
