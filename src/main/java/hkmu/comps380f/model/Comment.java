@@ -11,18 +11,19 @@ import java.util.UUID;
 public class Comment {
     @Id
     @GeneratedValue
+    @ColumnDefault("random_uuid()")
     private UUID id;
     @Column(name = "name", insertable=false, updatable=false)
     private String customerName;
     @ManyToOne
     @JoinColumn(name = "name")
-    private TicketUser customer;
+    private TicketUser customers;
     @CreationTimestamp
     private Date createTime;
 
     @UpdateTimestamp
     private Date updateTime;
-    @Column(name = "Book_id", insertable=false, updatable=false)
+    @Column(name = "book_id", insertable=false, updatable=false)
     private long bookId;
 
     @ManyToOne
@@ -40,11 +41,11 @@ public class Comment {
     }
 
     public TicketUser getCustomer() {
-        return customer;
+        return customers;
     }
 
-    public void setCustomer(TicketUser customer) {
-        this.customer = customer;
+    public void setCustomer(TicketUser customers) {
+        this.customers = customers;
     }
 
     public Date getCreateTime() {

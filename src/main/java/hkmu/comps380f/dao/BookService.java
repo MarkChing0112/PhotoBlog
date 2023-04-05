@@ -1,7 +1,9 @@
 package hkmu.comps380f.dao;
 
+import hkmu.comps380f.exception.CommentNotFound;
 import hkmu.comps380f.exception.PhotoNotFound;
 import hkmu.comps380f.exception.BookNotFound;
+import hkmu.comps380f.model.Comment;
 import hkmu.comps380f.model.Photo;
 import hkmu.comps380f.model.Book;
 import hkmu.comps380f.model.TicketUser;
@@ -22,6 +24,8 @@ public class BookService {
     private BookUserRepository buRepo;
     @Resource
     private PhotoRepository pRepo;
+    @Resource
+    private CommentRepository cRepo;
 
     @Transactional
     public List<Book> getBooks() {
@@ -40,7 +44,40 @@ public class BookService {
         }
         return book;
     }
+    @Transactional
+    public List<Comment> getComments() {
+        return cRepo.findAll();
+    }
+    @Transactional
+    public List<Comment> getCommentsbyBookid(long book_id){
+        return cRepo.findCommentsBybookId(book_id);
+    }
+//    @Transactional
+//    public Comment getComment(long book_id)
+//            throws BookNotFound {
+//        Comment comment = (Comment) cRepo.findCommentsByBook_id(book_id);
+//        if (comment == null) {
+//            throw new CommentNotFound(book_id);
+//        }
+//        return comment;
+//    }
+    @Transactional
+    public UUID createComment(String customerName, String body,long bookId)
+            throws IOException {
+        TicketUser customer = buRepo.findById(customerName).orElse(null);
 
+        if (customer == null){
+            throw new RuntimeException("User " + customerName + " not found.");
+        }
+        Comment comment = new Comment();
+        Book book = getBook(bookId);
+        comment.setCustomer(customer);
+        comment.setBody(body);
+        comment.setBook(book);
+        Comment savedComment = cRepo.save(comment);
+        customer.getComments().add(savedComment);
+        return savedComment.getId();
+    }
     @Transactional
     public Photo getPhoto(long bookId, UUID photoId)
             throws BookNotFound, PhotoNotFound {

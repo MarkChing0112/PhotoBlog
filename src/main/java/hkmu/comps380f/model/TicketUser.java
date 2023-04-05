@@ -24,7 +24,7 @@ public class TicketUser {
             cascade = CascadeType.ALL, orphanRemoval = true)
 
     private List<Book> books = new ArrayList<>();
-    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY,
+    @OneToMany(mappedBy = "customers", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments = new ArrayList<>();
     @CreationTimestamp
