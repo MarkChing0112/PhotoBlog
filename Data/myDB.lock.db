@@ -1,6 +1,6 @@
 #FileLock
-#Wed Apr 05 23:47:02 HKT 2023
-server=192.168.50.37\:57456
-hostName=iphone14promax
+#Wed Apr 05 23:55:28 HKT 2023
+server=192.168.0.90\:50548
+hostName=DESKTOP-FO686GI
 method=file
-id=18752199bac5fe4cf9fb186eae926d28e088a8c9fcd
+id=18752214b28be16f6e10b8b83e98d0115071d6e8a35

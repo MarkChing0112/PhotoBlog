@@ -64,5 +64,10 @@ public class UserManagementController {
         umService.delete(username);
         return "redirect:/user/list";
     }
+
+    @GetMapping("/profile")
+    public String profile(){
+        return "profile";
+    }
 }
 
