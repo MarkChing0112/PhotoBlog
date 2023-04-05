@@ -2,6 +2,7 @@ package hkmu.comps380f.controller;
 
 import hkmu.comps380f.dao.BookService;
 //import hkmu.comps380f.dao.CommentService;
+import hkmu.comps380f.dao.CommentService;
 import hkmu.comps380f.dao.UserManagementService;
 import hkmu.comps380f.exception.CommentNotFound;
 import hkmu.comps380f.exception.PhotoNotFound;
@@ -32,7 +33,8 @@ public class BookController {
 
     @Resource
     private BookService bService;
-//    private CommentService cService;
+    @Resource
+    private CommentService cService;
     UserManagementService umService;
     // Controller methods, Form-backing object, ...
     @GetMapping(value = {"","/home"})
@@ -93,7 +95,18 @@ public class BookController {
             this.photos = photos;
         }
     }
+    public static class CommentForm{
 
+        private String body;
+
+        public String getBody() {
+            return body;
+        }
+
+        public void setBody(String body) {
+            this.body = body;
+        }
+    }
 
 
     @GetMapping("/view/{bookId}")
@@ -168,17 +181,46 @@ public class BookController {
         return "redirect:/Books/view/" + bookId;
     }
 
-//    @GetMapping("/detail/{bookId}")
-//    public String detail(@PathVariable("bookId") long bookId,
-//                       ModelMap model)
+    @GetMapping("/detail/{bookId}")
+    public ModelAndView detail(@PathVariable("bookId") long bookId,
+                       ModelMap model)
+        throws BookNotFound {
+        Book book = bService.getBook(bookId);
+
+        model.addAttribute("bookId", bookId);
+        model.addAttribute("book", book);
+
+        return new ModelAndView("PhotoDetail-user", "Commentform", new CommentForm());
+    }
+    @PostMapping("/detail/{bookId}")
+    public View detail(CommentForm form,Principal principal,@PathVariable("bookId") long bookId)
+            throws IOException {
+        cService.createComment(principal.getName(),form.getBody());
+        return new RedirectView("/Books/detail/" + bookId, true);
+    }
+//    @GetMapping("/create/{bookId}/comment")
+//    public ModelAndView createComment(@PathVariable("bookId") long bookId, ModelMap model, Principal principal,
+//                                      HttpServletRequest request)
 //        throws CommentNotFound {
 //        Book book = bService.getBook(bookId);
-//        model.addAttribute("bookId", bookId);
-//        model.addAttribute("book", book);
-//        model.addAttribute("CommentDatabase", cService.getComments());
-//        return "PhotoDetail-user.jsp";
+//        if (book == null
+//                && !principal.getName().equals(book.getCustomerName())) {
+//            return new ModelAndView(new RedirectView("/Books/detail", true));
+//        }
+//        model.addAttribute("bookId",bookId);
+//        return new ModelAndView("CreateComment", "CommentFrom", new CommentForm());
 //    }
-
-
+//    @PostMapping("/create/{bookId}/comment")
+//    public View createComment(CommentForm form, Principal principal,@PathVariable("bookId") long bookId)
+//            throws IOException {
+//        Book book = bService.getBook(bookId);
+//        if (book == null
+//                || (!request.isUserInRole("ROLE_ADMIN")
+//                && !principal.getName().equals(book.getCustomerName()))) {
+//            return new ModelAndView(new RedirectView("/Books/list", true));
+//        }
+//        cService.createComment(principal.getName(),form.getBody());
+//        return new RedirectView("/Books/detail/" + bookId, true);
+//    }
 }
 

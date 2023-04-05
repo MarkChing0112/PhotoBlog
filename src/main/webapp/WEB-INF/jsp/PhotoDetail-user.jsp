@@ -61,6 +61,13 @@ Attachments:
 </c:forEach><br/><br/>
 </c:if>
 <a href="<c:url value="/Books/list" />">Return to list tickets</a>
+<%--<a href="<c:url value="/Books/create/${bookId}/comment" />">Create Comment</a>--%>
+
+<form:form method="POST" modelAttribute="Commentform">
+<form:label path="body">Body</form:label><br/>
+    <form:textarea path="body" rows="5" cols="30"/><br/><br/>
+<input type="submit" value="Submit"/>
+</form:form>
 
 <h2 style="text-align: center;">Comments</h2>
 <div style="width: 740px; margin-left: auto; margin-right: auto; "  class="d-flex flex-row add-comment-section mt-4 mb-4"><input type="text" class="form-control mr-3" placeholder="Add comment"><button class="btn btn-primary" type="button">Comment</button></div>

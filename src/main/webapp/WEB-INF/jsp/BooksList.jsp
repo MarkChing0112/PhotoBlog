@@ -54,7 +54,7 @@
 
       </tr>
 <th scope="row">Book ${entry.id}:</th>
-    <td> <a href="<c:url value="/Books/view/${entry.id}" />">
+    <td> <a href="<c:url value="/Books/detail/${entry.id}" />">
         <c:out value="${entry.subject}"/></a></td>
      <td>(customer: <c:out value="${entry.customerName}"/>)</td>
 

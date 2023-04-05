@@ -34,6 +34,21 @@ public class Book {
     @Fetch(FetchMode.SUBSELECT)
     private List<Photo> photos = new ArrayList<>();
 
+
+
+    @OneToMany(mappedBy = "books", fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL, orphanRemoval = true)
+    @Fetch(FetchMode.SUBSELECT)
+    private List<Comment> comments = new ArrayList<>();
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
     // getters and setters of all properties
     public long getId() {
         return id;
@@ -66,6 +81,8 @@ public class Book {
     public void setBody(String body) {
         this.body = body;
     }
+
+
 
     public List<Photo> getPhotos() {
         return photos;

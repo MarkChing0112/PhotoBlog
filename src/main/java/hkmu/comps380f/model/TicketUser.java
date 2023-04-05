@@ -24,8 +24,9 @@ public class TicketUser {
             cascade = CascadeType.ALL, orphanRemoval = true)
 
     private List<Book> books = new ArrayList<>();
-//    @OneToMany(mappedBy = "customers", fetch = FetchType.LAZY,
-//            cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comment> comments = new ArrayList<>();
     @CreationTimestamp
     private Date createTime;
     @UpdateTimestamp
@@ -70,6 +71,14 @@ public class TicketUser {
 
     public void setBooks(List<Book> books) {
         this.books = books;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
     public Date getCreateTime() {

@@ -84,7 +84,7 @@
                         <h4><c:out value="${entry.subject}"/></h4>
                         <span> <c:out value="${entry.customerName}"/></span>
 
-                        <a class="btn btn-primary" role="button" href="<c:url value="/Books/view/${entry.id}"/>">
+                        <a class="btn btn-primary" role="button" href="<c:url value="/Books/detail/${entry.id}"/>">
                             Details
                         </a>
                     </div>
