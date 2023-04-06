@@ -112,7 +112,8 @@ public class BookController {
         Book book = bService.getBook(bookId);
         model.addAttribute("bookId", bookId);
         model.addAttribute("book", book);
-        return "PhotoDetail-user";
+        model.addAttribute("Comments",bService.getCommentsbyBookid(bookId));
+        return "PhotoDetail-Admin";
     }
 
     @GetMapping("/{bookId}/photo/{photo:.+}")
@@ -185,7 +186,7 @@ public class BookController {
 
         model.addAttribute("bookId", bookId);
         model.addAttribute("book", book);
-        model.addAttribute("Comments",bService.getComments());
+        model.addAttribute("Comments",bService.getCommentsbyBookid(bookId));
         return new ModelAndView("PhotoDetail-user", "Commentform", new CommentForm());
     }
     @PostMapping("/detail/{bookId}")
