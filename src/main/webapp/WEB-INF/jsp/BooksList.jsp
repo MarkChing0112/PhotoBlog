@@ -67,7 +67,7 @@
 
 
 <%--      Display Delete Button--%>
-    <security:authorize access="principal.username=='${entry.customerName}'">
+    <security:authorize access="hasRole('ADMIN') or principal.username=='${entry.customerName}'">
         <a class="btn btn-danger" href="<c:url value="/Books/delete/${entry.id}" />"> <span class="bi bi-trash"></span>Delete</a><br/><br/>
     </security:authorize>
     </c:forEach>

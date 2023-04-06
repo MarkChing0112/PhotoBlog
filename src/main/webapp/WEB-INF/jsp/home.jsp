@@ -39,7 +39,7 @@
         <h1 class="logo me-auto"><a>BookShop</a></h1>
 
         <nav id="navbar" class="navbar">
-            <a href="/BookShop/user/profile">Profile</a>
+            <a class="getstarted scrollto" href="/BookShop/user/profile">Profile</a>
             <c:url var="logoutUrl"  value="/logout"/>
             <security:authorize access="hasRole('ADMIN') ">
                 <a class="getstarted scrollto" role="button" href="/BookShop/Books/list" /> Manage</a>

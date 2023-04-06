@@ -5,6 +5,9 @@
     <link href="css/style.css" rel="stylesheet">
     <style><%@include file="../css/style.css"%></style>
     <style><%@include file="../css/bootstrap.min.css"%></style>
+
+
+
 </head>
 
 <body>
@@ -32,29 +35,53 @@
 
 
 
-<h2>Book #${bookId}: <c:out value="${book.subject}"/></h2>
+
 <security:authorize access="hasRole('ADMIN') or
                 principal.username=='${book.customerName}'">
-[<a href="<c:url value="/Books/edit/${book.id}" />">Edit</a>]
+<h2 style="text-align: center">Book #${bookId}: <c:out value="${book.subject}"/></h2>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-image">
+                <thead>
+                <tr>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">Book created</th>
+                    <th scope="col">Book updated</th>
+
+                    <th scope="col">Action</th>
+
+                </tr>
+                </thead>
+                <!--Body Lsit of Book records-->
+                <tbody>
+                    <th scope="row"><c:out value="${book.customerName}"/></th>
+                    <td><fmt:formatDate value="${book.createTime}"
+                                        pattern="EEE, d MMM yyyy HH:mm:ss Z"/></td>
+                    <td>
+                        <fmt:formatDate value="${book.updateTime}"
+                                        pattern="EEE, d MMM yyyy HH:mm:ss Z"/>
+                    </td>
+                    <td><a class="btn btn-primary" href="<c:url value="/Books/edit/${book.id}" />"> <span class="bi bi-pencil-square"/>Edit</a></td>
+                    <%--      Display Delete Button--%>
+
+                </td>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 </security:authorize>
-<security:authorize access="principal.username=='${book.customerName}'">
-[<a href="<c:url value="/Books/delete/${book.id}" />">Delete</a>]<br/><br/>
-</security:authorize>
-<i>Customer Name - <c:out value="${book.customerName}"/></i><br/>
-Book created: <fmt:formatDate value="${book.createTime}"
-                              pattern="EEE, d MMM yyyy HH:mm:ss Z"/><br/>
-Book updated: <fmt:formatDate value="${book.updateTime}"
-                              pattern="EEE, d MMM yyyy HH:mm:ss Z"/><br/><br/>
-<c:out value="${book.body}"/><br/><br/>
 
 <c:if test="${!empty book.photos}">
-Attachments:
+
 <c:forEach items="${book.photos}" var="photo" varStatus="status">
 <c:if test="${!status.first}">, </c:if>
 
     <%--Image of User photos    --%>
-<img src="<c:url value="/Books/${bookId}/photo/${photo.id}" />">
-
+<div>
+<img class="rounded mx-auto d-block" src="<c:url value="/Books/${bookId}/photo/${photo.id}" />">
+</div>
     <%-- <c:out value="${attachment.name}"/>--%>
 
 <security:authorize access="principal.username=='${book.customerName}'">
@@ -62,29 +89,19 @@ Attachments:
 </security:authorize>
 </c:forEach><br/><br/>
 </c:if>
-<a href="<c:url value="/Books/list" />">Return to list tickets</a>
 <%--<a href="<c:url value="/Books/create/${bookId}/comment" />">Create Comment</a>--%>
 
 <%--<form:form method="POST" modelAttribute="Commentform">--%>
 <%--<form:label path="body">Body</form:label><br/>--%>
 <%--    <form:textarea path="body" rows="5" cols="30"/><br/><br/>--%>
 <%--<input type="submit" value="Submit"/>--%>
-
 <h2 style="text-align: center;">Comments</h2>
-<div style="width: 740px; margin-left: auto; margin-right: auto; "  class="d-flex flex-row add-comment-section mt-4 mb-4">
-    <form:form method="POST" modelAttribute="Commentform">
-        <%--        <form:label path="body">Body</form:label><br/>--%>
-        <form:textarea path="body" rows="5" cols="30"/></br>
-        <input value="Submit" class="btn btn-primary" type="submit" />
-    </form:form>
-</div>
+
 <div class="container mt-5">
     <div class="row  d-flex justify-content-center">
-        <div class="col-md-8">
+        <br class="col-md-8">
             <div class="headings d-flex justify-content-between align-items-center mb-3">
-                <h5>Unread comments(6)</h5>
-                <div class="buttons">
-                </div>
+                <h5>User Comment</h5>
             </div>
             <%--      Start Loop      --%>
             <c:forEach items="${Comments}" var="comments" varStatus="status">
@@ -98,17 +115,17 @@ Attachments:
                                             pattern="EEE, d MMM yyyy HH:mm:ss Z"/></small>
 
                 </div>
-                <div class="action d-flex justify-content-between mt-2 align-items-center">
-                    <div class="icons align-items-center">
-                        <i class="fa fa-star text-warning"></i>
-                        <i class="fa fa-check-circle-o check-icon"></i>
-                    </div>
-                </div>
             </div>
             </c:forEach>
             <%--     End       --%>
+
+            <form:form method="POST" modelAttribute="Commentform">
+                <%--        <form:label path="body">Body</form:label><br/>--%>
+                <form:textarea placeholder="Type Your Comments" path="body" rows="5" cols="30" /></br>
+                <input value="Submit" class="btn btn-primary" type="submit" />
+            </form:form>
         </div>
     </div>
 </div>
-
+</body>
 </html>

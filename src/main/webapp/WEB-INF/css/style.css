@@ -732,10 +732,14 @@ section {
 .clients .swiper-slide img {
   opacity: 0.5;
   transition: 0.3s;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .clients .swiper-slide img:hover {
   opacity: 1;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .clients .swiper-pagination {
@@ -1001,6 +1005,8 @@ section {
 
 .portfolio .portfolio-wrap img {
   transition: all ease-in-out 0.3s;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .portfolio .portfolio-wrap .portfolio-info {
@@ -1057,6 +1063,8 @@ section {
 
 .portfolio .portfolio-wrap:hover img {
   transform: scale(1.2);
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .portfolio .portfolio-wrap:hover .portfolio-info {
@@ -1072,6 +1080,8 @@ section {
 
 .portfolio-details .portfolio-details-slider img {
   width: 100%;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .portfolio-details .portfolio-details-slider .swiper-pagination {
@@ -1141,8 +1151,8 @@ section {
 
 .team .member img {
   max-width: 100%;
-  
-  margin: 0 0 30px 0;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .team .member h4 {
