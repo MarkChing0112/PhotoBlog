@@ -13,21 +13,22 @@
 </security:authorize>
 
 
+<c:forEach items="${bookDatabase}" var="entry">
+    <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+        <div class="member">
+            <c:if test="${!empty entry.photos}">
+                <c:forEach items="${entry.photos}" var="photo" varStatus="status">
+                    <c:if test="${!status.first}">, </c:if>
+                    <%--Image of User photos    --%>
+                    <img src="<c:url value="/Books/${entry.id}/photo/${photo.id}" />">
+                </c:forEach>
+            </c:if>
 
-<c:if test="${not empty photos}">
-    <h2>Photos:</h2>
-    <table>
-        <tr>
-            <th>Photo</th>
-            <th>Uploaded Date and Time</th>
-        </tr>
-        <c:forEach var="photo" items="${photos}">
-            <tr>
-                <td><img src="${photo.getFilePath()}"></td>
-                <td>${photo.getUploadedDateTime()}</td>
-            </tr>
-        </c:forEach>
-    </table>
-</c:if>
+
+            </a>
+        </div>
+    </div>
+</c:forEach>
+
 </body>
 </html>

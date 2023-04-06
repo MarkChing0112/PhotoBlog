@@ -1,5 +1,6 @@
 package hkmu.comps380f.controller;
 
+import hkmu.comps380f.dao.BookService;
 import hkmu.comps380f.dao.UserManagementService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,10 @@ import java.io.IOException;
 public class UserManagementController {
     @Resource
     UserManagementService umService;
+
+    @Resource
+    private BookService bService;
+
     public static class Form {
         private String username;  private String password;  private String[] roles;
 
@@ -65,9 +70,14 @@ public class UserManagementController {
         return "redirect:/user/list";
     }
 
+
+
     @GetMapping("/profile")
-    public String profile(){
+    public String profile(ModelMap model){
+        model.addAttribute("bookDatabase", bService.getBooks());
         return "profile";
     }
+
+
 }
 
