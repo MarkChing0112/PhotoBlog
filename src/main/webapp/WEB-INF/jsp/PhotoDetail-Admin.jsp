@@ -13,7 +13,7 @@
 <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center">
 
-        <h1 class="logo me-auto"><a href="/Books/home">BookShop</a></h1>
+        <h1 class="logo me-auto"><a href="/BookShop/Books/list" >BookShop</a></h1>
 
         <nav id="navbar" class="navbar">
             <c:url var="logoutUrl"  value="/logout"/>
@@ -30,9 +30,6 @@
 
     </div>
 </header><!-- End Header -->
-
-
-
 
 <security:authorize access="hasRole('ADMIN') or
                 principal.username=='${book.customerName}'">
@@ -103,11 +100,15 @@
                         <span><small class="font-weight-bold text-primary">${comments.customerName}</small> </br>
                             <small class="font-weight-bold">${comments.body}</small></span>
                     </div>
+                    <security:authorize access="hasRole('ADMIN')">
+                        <a href="<c:url value="/Books/${bookId}/deleteComment/${comments.id}" />">Delete</a>
+                    </security:authorize>
                     <small> <fmt:formatDate value="${comments.createTime}"
                                             pattern="EEE, d MMM yyyy HH:mm:ss Z"/></small>
 
                 </div>
             </div>
+
         </c:forEach>
         <%--     End       --%>
     </div>

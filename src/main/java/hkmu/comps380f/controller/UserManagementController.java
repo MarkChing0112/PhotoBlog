@@ -62,7 +62,7 @@ public class UserManagementController {
     @GetMapping({"", "/", "/list"})
     public String list(ModelMap model) {
         model.addAttribute("ticketUsers", umService.getTicketUsers());
-        return "listUser";
+        return "UserList";
     }
     @GetMapping("/delete/{username}")
     public String deleteTicket(@PathVariable("username") String username) {

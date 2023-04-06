@@ -16,7 +16,7 @@
 <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center">
 
-        <h1 class="logo me-auto"><a href="/Books/home">BookShop</a></h1>
+        <h1 class="logo me-auto"><a href="/BookShop/Books/home">BookShop</a></h1>
 
         <nav id="navbar" class="navbar">
             <c:url var="logoutUrl"  value="/logout"/>
@@ -37,8 +37,7 @@
 
 
 
-<security:authorize access="hasRole('ADMIN') or
-                principal.username=='${book.customerName}'">
+
 <h2 style="text-align: center">Book #${bookId}: <c:out value="${book.subject}"/></h2>
 <div class="container">
     <div class="row">
@@ -46,12 +45,9 @@
             <table class="table table-image">
                 <thead>
                 <tr>
-                    <th scope="col">Customer Name</th>
+                    <th scope="col">writer</th>
                     <th scope="col">Book created</th>
                     <th scope="col">Book updated</th>
-
-                    <th scope="col">Action</th>
-
                 </tr>
                 </thead>
                 <!--Body Lsit of Book records-->
@@ -63,33 +59,24 @@
                         <fmt:formatDate value="${book.updateTime}"
                                         pattern="EEE, d MMM yyyy HH:mm:ss Z"/>
                     </td>
-                    <td><a class="btn btn-primary" href="<c:url value="/Books/edit/${book.id}" />"> <span class="bi bi-pencil-square"/>Edit</a></td>
-                    <%--      Display Delete Button--%>
-
                 </td>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-</security:authorize>
 
 <c:if test="${!empty book.photos}">
 
 <c:forEach items="${book.photos}" var="photo" varStatus="status">
 <c:if test="${!status.first}">, </c:if>
-    <%--Image of User photos    --%>
+    <%--Image of photo    --%>
 <div>
 <img class="rounded mx-auto d-block" src="<c:url value="/Books/${bookId}/photo/${photo.id}" />">
 </div>
 </c:forEach><br/><br/>
 </c:if>
-<%--<a href="<c:url value="/Books/create/${bookId}/comment" />">Create Comment</a>--%>
-
-<%--<form:form method="POST" modelAttribute="Commentform">--%>
-<%--<form:label path="body">Body</form:label><br/>--%>
-<%--    <form:textarea path="body" rows="5" cols="30"/><br/><br/>--%>
-<%--<input type="submit" value="Submit"/>--%>
+<%--Start Display comment--%>
 <h2 style="text-align: center;">Comments</h2>
 
 <div class="container mt-5">
@@ -114,7 +101,6 @@
             </c:forEach>
             <%--     End       --%>
             <form:form method="POST" modelAttribute="Commentform">
-                <%--        <form:label path="body">Body</form:label><br/>--%>
                 <form:textarea placeholder="Type Your Comments" path="body" rows="5" cols="30" /></br>
                 <input value="Submit" class="btn btn-primary" type="submit" />
             </form:form>

@@ -42,14 +42,9 @@ public class BookController {
     public String list(ModelMap model) {
         model.addAttribute("bookDatabase", bService.getBooks());
 
-        return "BooksList";
+        return "Admin";
     }
-//    @GetMapping(value = {"/list/user/{username}"})
-//    public String list(ModelMap model, @PathVariable("username") String username) {
-//        model.addAttribute("bookDatabase", bService.getBooksByUser(username));
-////        model.addAttribute("ticketUsers", umService.getTicketUsers());
-//        return "BooksList";
-//    }
+
     @GetMapping("/create")
     public ModelAndView create() {
         return new ModelAndView("CreateBook", "bookForm", new Form());
@@ -115,7 +110,13 @@ public class BookController {
         model.addAttribute("Comments",bService.getCommentsbyBookid(bookId));
         return "PhotoDetail-Admin";
     }
-
+    @GetMapping("/{bookId}/deleteComment/{cid}")
+    public String deleteComment(@PathVariable("bookId") long bookId,
+                                @PathVariable("cid") UUID cid)
+            throws BookNotFound {
+        bService.deleteComment(bookId,cid);
+        return "redirect:/Books/view/" + bookId;
+    }
     @GetMapping("/{bookId}/photo/{photo:.+}")
     public View download(@PathVariable("bookId") long bookId,
                          @PathVariable("photo") UUID photoId)
@@ -178,6 +179,7 @@ public class BookController {
         return "redirect:/Books/view/" + bookId;
     }
 
+//    User Detail
     @GetMapping("/detail/{bookId}")
     public ModelAndView detail(@PathVariable("bookId") long bookId,
                        ModelMap model)
@@ -196,29 +198,5 @@ public class BookController {
         bService.createComment(principal.getName(),form.getBody(),bookId);
         return new RedirectView("/Books/detail/" + bookId, true);
     }
-//    @GetMapping("/create/{bookId}/comment")
-//    public ModelAndView createComment(@PathVariable("bookId") long bookId, ModelMap model, Principal principal,
-//                                      HttpServletRequest request)
-//        throws CommentNotFound {
-//        Book book = bService.getBook(bookId);
-//        if (book == null
-//                && !principal.getName().equals(book.getCustomerName())) {
-//            return new ModelAndView(new RedirectView("/Books/detail", true));
-//        }
-//        model.addAttribute("bookId",bookId);
-//        return new ModelAndView("CreateComment", "CommentFrom", new CommentForm());
-//    }
-//    @PostMapping("/create/{bookId}/comment")
-//    public View createComment(CommentForm form, Principal principal,@PathVariable("bookId") long bookId)
-//            throws IOException {
-//        Book book = bService.getBook(bookId);
-//        if (book == null
-//                || (!request.isUserInRole("ROLE_ADMIN")
-//                && !principal.getName().equals(book.getCustomerName()))) {
-//            return new ModelAndView(new RedirectView("/Books/list", true));
-//        }
-//        cService.createComment(principal.getName(),form.getBody());
-//        return new RedirectView("/Books/detail/" + bookId, true);
-//    }
 }
 

@@ -52,15 +52,7 @@ public class BookService {
     public List<Comment> getCommentsbyBookid(long book_id){
         return cRepo.findCommentsBybookId(book_id);
     }
-//    @Transactional
-//    public Comment getComment(long book_id)
-//            throws BookNotFound {
-//        Comment comment = (Comment) cRepo.findCommentsByBook_id(book_id);
-//        if (comment == null) {
-//            throw new CommentNotFound(book_id);
-//        }
-//        return comment;
-//    }
+
     @Transactional
     public UUID createComment(String customerName, String body,long bookId)
             throws IOException {
@@ -77,6 +69,23 @@ public class BookService {
         Comment savedComment = cRepo.save(comment);
         customer.getComments().add(savedComment);
         return savedComment.getId();
+    }
+
+    @Transactional
+    public void deleteComment(long bookId, UUID cid)
+            throws BookNotFound, PhotoNotFound {
+        Book book = bRepo.findById(bookId).orElse(null);
+        if (book == null) {
+            throw new BookNotFound(bookId);
+        }
+        for (Comment comment : book.getComments()) {
+            if (comment.getId().equals(cid)) {
+                book.deleteComment(comment);
+                bRepo.save(book);
+                return;
+            }
+        }
+        throw new CommentNotFound(cid);
     }
     @Transactional
     public Photo getPhoto(long bookId, UUID photoId)

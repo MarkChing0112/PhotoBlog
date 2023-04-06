@@ -10,6 +10,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
+
 @Entity
 public class Book {
     @Id
@@ -119,5 +121,10 @@ public class Book {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public void deleteComment(Comment comment) {
+        comment.setBook(null);
+        this.comments.remove(comment);
     }
 }
