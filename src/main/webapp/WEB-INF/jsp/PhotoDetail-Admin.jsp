@@ -3,6 +3,7 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link href="css/style.css" rel="stylesheet">
     <style><%@include file="../css/style.css"%></style>
     <style><%@include file="../css/bootstrap.min.css"%></style>
@@ -31,8 +32,7 @@
     </div>
 </header><!-- End Header -->
 
-<security:authorize access="hasRole('ADMIN') or
-                principal.username=='${book.customerName}'">
+<security:authorize access="hasRole('ADMIN') ">
     <h2 style="text-align: center">Book #${bookId}: <c:out value="${book.subject}"/></h2>
     <div class="container">
         <div class="row">
@@ -65,24 +65,27 @@
             </div>
         </div>
     </div>
-</security:authorize>
+
 
 <c:if test="${!empty book.photos}">
+<div class="container">
+    <div class="row">
+        <c:forEach items="${book.photos}" var="photo" varStatus="status">
+            <c:if test="${!status.first}">, </c:if>
 
-    <c:forEach items="${book.photos}" var="photo" varStatus="status">
-        <c:if test="${!status.first}">, </c:if>
+            <%--Image of User photos    --%>
+            <div class="col-sm">
+                <img class="img-fluid img-thumbnail " src="<c:url value="/Books/${bookId}/photo/${photo.id}" />">
 
-        <%--Image of User photos    --%>
-        <div>
-            <img class="rounded mx-auto d-block" src="<c:url value="/Books/${bookId}/photo/${photo.id}" />">
-        </div>
+                    <a class="btn btn-danger" href="<c:url value="/Books/${bookId}/delete/${photo.id}" />"><span class="bi bi-trash"></span>Delete</a>
 
-        <security:authorize access="principal.username=='${book.customerName}'">
-            [<a href="<c:url value="/Books/${bookId}/delete/${photo.id}" />">Delete</a>]
-        </security:authorize>
-    </c:forEach><br/><br/>
-</c:if>
+            </div>
+        </c:forEach>
+    </div>
+</div>
+        </c:if>
 
+</security:authorize>
 <%--Display Comment list--%>
 <h2 style="text-align: center;">Comments</h2>
 
@@ -100,13 +103,14 @@
                         <span><small class="font-weight-bold text-primary">${comments.customerName}</small> </br>
                             <small class="font-weight-bold">${comments.body}</small></span>
                     </div>
-                    <security:authorize access="hasRole('ADMIN')">
-                        <a href="<c:url value="/Books/${bookId}/deleteComment/${comments.id}" />">Delete</a>
-                    </security:authorize>
+                </div>
                     <small> <fmt:formatDate value="${comments.createTime}"
                                             pattern="EEE, d MMM yyyy HH:mm:ss Z"/></small>
+                    <security:authorize access="hasRole('ADMIN')">
+                        <a class="btn btn-danger" href="<c:url value="/Books/${bookId}/deleteComment/${comments.id}" />"><span class="bi bi-trash"></span>Delete</a>
+                    </security:authorize>
 
-                </div>
+
             </div>
 
         </c:forEach>
