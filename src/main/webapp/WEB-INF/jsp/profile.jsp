@@ -19,13 +19,15 @@
             <c:if test="${!empty entry.photos}">
                 <c:forEach items="${entry.photos}" var="photo" varStatus="status">
                     <c:if test="${!status.first}">, </c:if>
-                    <%--Image of User photos    --%>
-                    <img src="<c:url value="/Books/${entry.id}/photo/${photo.id}" />">
+                    <security:authorize access="principal.username=='${entry.customerName}'">
+                        <%--Image of User photos    --%>
+                        <img src="<c:url value="/Books/${entry.id}/photo/${photo.id}" />">
+                        <fmt:formatDate value="${entry.createTime}"
+                                        pattern="EEE, d MMM yyyy HH:mm:ss Z"/></small>
+                    </security:authorize>
                 </c:forEach>
             </c:if>
 
-
-            </a>
         </div>
     </div>
 </c:forEach>

@@ -1,6 +1,6 @@
 #FileLock
-#Thu Apr 06 17:18:17 HKT 2023
-server=192.168.1.132\:52566
-hostName=holungdaxm1m2m3
+#Thu Apr 13 14:28:38 HKT 2023
+server=10.238.82.210\:60438
+hostName=DESKTOP-FO686GI
 method=file
-id=18755dc0b2dd3aa512ed9506c3165710aa61a1ccf96
+id=187794d38d4892d026e4e3ec1a4bbb3c8670a541bc8
