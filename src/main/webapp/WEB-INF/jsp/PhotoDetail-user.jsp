@@ -19,17 +19,31 @@
         <h1 class="logo me-auto"><a href="/BookShop/Books/home">BookShop</a></h1>
 
         <nav id="navbar" class="navbar">
+            <security:authorize access="isAuthenticated()">
+                <a class="getstarted scrollto" href="/BookShop/user/profile">Profile</a>
+                <a class="getstarted scrollto" href="/BookShop/Books/create">Share Book</a>
+            </security:authorize>
             <c:url var="logoutUrl"  value="/logout"/>
             <security:authorize access="hasRole('ADMIN') ">
                 <a class="getstarted scrollto" role="button" href="/BookShop/Books/list" /> Manage</a>
             </security:authorize>
-            <form   action="${logoutUrl} " method="post">
-                <input class="getstarted scrollto" type="submit" value="Logout" />
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            </form>
+
+            <security:authorize access ="isAnonymous() ">
+                <a class="getstarted scrollto" role="button" href="/BookShop/login" /> Login</a>
+            </security:authorize>
+            <%--LOGOUT--%>
+            <security:authorize access="isAuthenticated() ">
+                <form  action="${logoutUrl} " method="post">
+                    <input class="getstarted scrollto" type="submit" value="Logout" />
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                </form>
+            </security:authorize>
+
+
 
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>
+
 
     </div>
 </header><!-- End Header -->
@@ -100,10 +114,12 @@
             </div>
             </c:forEach>
             <%--     End       --%>
+        <security:authorize access="isAuthenticated ">
             <form:form method="POST" modelAttribute="Commentform">
                 <form:textarea placeholder="Type Your Comments" path="body" rows="5" cols="30" /></br>
                 <input value="Submit" class="btn btn-primary" type="submit" />
             </form:form>
+        </security:authorize>
         </div>
     </div>
 </div>

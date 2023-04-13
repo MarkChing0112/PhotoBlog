@@ -13,7 +13,7 @@
 <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center">
 
-        <h1 class="logo me-auto"><a>BookShop</a></h1>
+        <h1 class="logo me-auto"><a href="/BookShop/Books/home">BookShop</a></h1>
 
         <nav id="navbar" class="navbar">
             <a class="getstarted scrollto" href="/BookShop/user/profile">Profile</a>

@@ -22,7 +22,7 @@ public class SecurityConfig {
 
                         .requestMatchers("/Books/*/delete/**").hasRole("ADMIN")
                         .requestMatchers("/Books/delete/**").hasRole("ADMIN")
-                        .requestMatchers("/Books/home").hasAnyRole("ADMIN","USER")
+//                        .requestMatchers("/Books/home").permitAll()
                         .requestMatchers("/Books/list").hasRole("ADMIN")
 //                        .requestMatchers("/Books/list/user/**").hasRole("ADMIN")
                         .requestMatchers("/Books/create").hasAnyRole("ADMIN","USER")
