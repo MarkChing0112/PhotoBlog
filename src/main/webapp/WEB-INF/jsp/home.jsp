@@ -36,6 +36,7 @@
 
         <nav id="navbar" class="navbar">
             <a class="getstarted scrollto" href="/BookShop/user/profile">Profile</a>
+            <a class="getstarted scrollto" href="/BookShop/Books/create">Share Book</a>
             <c:url var="logoutUrl"  value="/logout"/>
             <security:authorize access="hasRole('ADMIN') ">
                 <a class="getstarted scrollto" role="button" href="/BookShop/Books/list" /> Manage</a>
