@@ -21,11 +21,7 @@
 <%--    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">--%>
 <%--    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">--%>
     <style><%@include file="../css/bootstrap.min.css"%></style>
-<%--    <style><%@include file="../css/style.css"%></style>--%>
-<%--    <style><%@include file="../css/style.css"%></style>--%>
-<%--    <style><%@include file="../css/style.css"%></style>--%>
-<%--    <style><%@include file="../css/style.css"%></style>--%>
-<%--    <style><%@include file="../css/style.css"%></style>--%>
+
     <style><%@include file="../css/style.css"%></style>
 
 
