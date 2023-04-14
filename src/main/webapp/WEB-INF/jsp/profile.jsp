@@ -11,7 +11,7 @@
 
 </head>
 <!-- ======= Header ======= -->
-<header style="border-bottom: 3px solid #a2d786;" id="header" class="d-flex align-items-center">
+<header  id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center">
 
         <h1 class="logo me-auto"><a href="/BookShop/Books/home">BookShop</a></h1>
@@ -34,6 +34,9 @@
     </div>
 </header><!-- End Header -->
 <body>
+<main id="main">
+    <section id="team" class="team section-bg">
+        <div class="container">
 <security:authorize access="isAuthenticated()">
     <h1 style="text-align: center"> Profile </h1>
     <p style="text-align: center"><security:authentication property="principal.username" /></p>
@@ -48,9 +51,7 @@
 
 
 
-<main id="main">
-    <section id="team" class="team section-bg">
-        <div class="container">
+
             <c:choose>
             <c:when test="${fn:length(bookDatabase) == 0}">
                 <i>You did not share any books</i>
