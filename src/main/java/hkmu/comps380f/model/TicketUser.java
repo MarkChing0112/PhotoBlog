@@ -15,7 +15,7 @@ public class TicketUser {
     private String username;
     private String password;
 
-//    private String description;
+    private String description;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER,
             cascade = CascadeType.ALL, orphanRemoval = true)
@@ -89,12 +89,12 @@ public class TicketUser {
         this.createTime = createTime;
     }
 
-//    public String getDescription() {
-//        return description;
-//    }
-//
-//    public void setDescription(String description) {
-//        this.description = description;
-//    }
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
 

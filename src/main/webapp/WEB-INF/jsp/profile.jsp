@@ -33,19 +33,21 @@
 </header><!-- End Header -->
 <body>
 <security:authorize access="isAuthenticated()">
-    <h1>Welcome, <security:authentication property="principal.username" />!</h1>
     <p>Your profile information:</p>
-    <p>Name: ${username}</p>
-
+    <p>Name: <security:authentication property="principal.username" /></p>
+    <p>Description: <c:out value="${User.description}" /></p>
 </security:authorize>
-
+<form:form method="POST" modelAttribute="descriptionForm">
+    <form:textarea placeholder="Type Your Description" path="description" rows="5" cols="30" /></br>
+    <input value="Submit" class="btn btn-primary" type="submit" />
+</form:form>
 
 <c:forEach items="${bookDatabase}" var="entry">
     <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
         <div class="member">
             <c:if test="${!empty entry.photos}">
                 <c:forEach items="${entry.photos}" var="photo" varStatus="status">
-                    <c:if test="${!status.first}">, </c:if>
+
                     <security:authorize access="principal.username=='${entry.customerName}'">
                         <%--Image of User photos    --%>
                         <img src="<c:url value="/Books/${entry.id}/photo/${photo.id}" />">

@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.IOException;
+import java.security.Principal;
 
 @Controller
 @RequestMapping("/user")
@@ -49,6 +52,18 @@ public class UserManagementController {
             this.roles = roles;
         }
     }
+
+    public static class descriptionForm {
+        private String description;
+
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
+    }
     @GetMapping("/create")
     public ModelAndView create() {
 
@@ -71,11 +86,18 @@ public class UserManagementController {
     }
 
 
-
     @GetMapping("/profile")
-    public String profile(ModelMap model){
+    public ModelAndView profile(ModelMap model, Principal principal){
         model.addAttribute("bookDatabase", bService.getBooks());
-        return "profile";
+        model.addAttribute("User", umService.getTicketUser(principal.getName()));
+        return new ModelAndView("profile", "descriptionForm", new descriptionForm());
+    }
+
+    @PostMapping("/profile")
+    public View profile(Principal principal, descriptionForm form) throws IOException{
+
+        umService.createDescription(principal.getName(), form.getDescription());
+        return new RedirectView("/user/profile", true);
     }
 
 
