@@ -17,6 +17,7 @@
 
         <nav id="navbar" class="navbar">
             <a class="getstarted scrollto" href="/BookShop/user/profile">Profile</a>
+            <a class="getstarted scrollto" href="/BookShop/Books/create">Share Book</a>
             <c:url var="logoutUrl"  value="/logout"/>
             <security:authorize access="hasRole('ADMIN') ">
                 <a class="getstarted scrollto" role="button" href="/BookShop/Books/list" /> Manage</a>
@@ -33,7 +34,7 @@
 </header><!-- End Header -->
 <body>
 <security:authorize access="isAuthenticated()">
-    <p>Your profile information:</p>
+    <h1> Profile </h1>
     <p>Name: <security:authentication property="principal.username" /></p>
     <p>Description: <c:out value="${User.description}" /></p>
 </security:authorize>
@@ -42,13 +43,30 @@
     <input value="Submit" class="btn btn-primary" type="submit" />
 </form:form>
 
+
+
+<main id="main">
+    <section id="team" class="team section-bg">
+        <div class="container">
+            <c:choose>
+            <c:when test="${fn:length(bookDatabase) == 0}">
+                <i>You did not share any books</i>
+            </c:when>
+
+            <c:otherwise>
+            <div class="section-title">
+                <h2>Yours Books</h2>
+                <p></p>
+            </div>
+            <div class="row">
+
 <c:forEach items="${bookDatabase}" var="entry">
     <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
         <div class="member">
             <c:if test="${!empty entry.photos}">
                 <c:forEach items="${entry.photos}" var="photo" varStatus="status">
-
                     <security:authorize access="principal.username=='${entry.customerName}'">
+    
                         <%--Image of User photos    --%>
                         <img src="<c:url value="/Books/${entry.id}/photo/${photo.id}" />">
                         <fmt:formatDate value="${entry.createTime}"
@@ -60,6 +78,15 @@
         </div>
     </div>
 </c:forEach>
+
+            </div>
+            </c:otherwise>
+            </c:choose>
+        </div>
+    </section><!-- End Team Section -->
+
+</main><!-- End #main -->
+
 
 </body>
 </html>
