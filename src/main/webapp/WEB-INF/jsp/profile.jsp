@@ -8,6 +8,7 @@
     <style><%@include file="../css/bootstrap.min.css"%></style>
 
     <style><%@include file="../css/style.css"%></style>
+
 </head>
 <!-- ======= Header ======= -->
 <header id="header" class="d-flex align-items-center">
@@ -34,12 +35,14 @@
 </header><!-- End Header -->
 <body>
 <security:authorize access="isAuthenticated()">
-    <h1> Profile </h1>
-    <p>Name: <security:authentication property="principal.username" /></p>
-    <p>Description: <c:out value="${User.description}" /></p>
+    <h1 style="text-align: center"> Profile </h1>
+    <p style="text-align: center"><security:authentication property="principal.username" /></p>
+    <p style="text-align: center"> Description</p>
+    <p class="text-break" style="text-align: center" ><c:out value="${User.description}" /></p>
 </security:authorize>
+
 <form:form method="POST" modelAttribute="descriptionForm">
-    <form:textarea placeholder="Type Your Description" path="description" rows="5" cols="30" /></br>
+    <form:textarea placeholder="Type Your Description" path="description" rows="5" cols="100" /></br>
     <input value="Submit" class="btn btn-primary" type="submit" />
 </form:form>
 
@@ -66,7 +69,7 @@
             <c:if test="${!empty entry.photos}">
                 <c:forEach items="${entry.photos}" var="photo" varStatus="status">
                     <security:authorize access="principal.username=='${entry.customerName}'">
-    
+
                         <%--Image of User photos    --%>
                         <img src="<c:url value="/Books/${entry.id}/photo/${photo.id}" />">
                         <fmt:formatDate value="${entry.createTime}"
