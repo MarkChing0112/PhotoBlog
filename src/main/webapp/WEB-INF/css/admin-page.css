@@ -4,20 +4,20 @@ h1{
 .container {
     padding: 3rem 0rem;
 
-  }
-  
+}
+
 h4 {
     margin: 2rem 0rem 1rem;
-  }
-  
+}
+
 .navbar-brand{
     margin-left: 10px;
 }
 .navbar form {
-    margin-left: 10px;
+  
     margin-top: 5px;
     margin-right: 10px;
-    
+
 }
 
 .navbar .getstarted,
@@ -25,7 +25,6 @@ h4 {
     background-color: #222529;
     color: #C54444;
     padding: 8px 25px;
-    margin-left: 30px;
     border-radius: 4px;
     border: 2px solid #C54444;
     transition: 0.3s;
@@ -37,4 +36,3 @@ h4 {
     background: #C54444;
     color: #fff;
 }
-
