@@ -14,11 +14,11 @@
 <header  id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center">
 
-        <h1 class="logo me-auto"><a href="/BookShop/Books/home">BookShop</a></h1>
+        <h1 class="logo me-auto"><a href="/BookShop/Books/home">PhotoShop</a></h1>
 
         <nav  id="navbar" class="navbar">
             <a class="getstarted scrollto" href="/BookShop/user/profile">Profile</a>
-            <a class="getstarted scrollto" href="/BookShop/Books/create">Share Book</a>
+            <a class="getstarted scrollto" href="/BookShop/Books/create">Share Photo</a>
             <c:url var="logoutUrl"  value="/logout"/>
             <security:authorize access="hasRole('ADMIN') ">
                 <a class="getstarted scrollto" role="button" href="/BookShop/Books/list" /> Manage</a>
@@ -46,7 +46,7 @@
 
 <form:form method="POST" modelAttribute="descriptionForm">
     <form:textarea placeholder="Type Your Description" path="description" rows="5" cols="100" /></br>
-    <input value="Submit" class="btn btn-primary" type="submit" />
+    <input value="Update" class="btn btn-primary" type="submit" />
 </form:form>
 
 

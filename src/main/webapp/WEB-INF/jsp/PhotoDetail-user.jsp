@@ -16,12 +16,12 @@
 <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center">
 
-        <h1 class="logo me-auto"><a href="/BookShop/Books/home">BookShop</a></h1>
+        <h1 class="logo me-auto"><a href="/BookShop/Books/home">PhotoShop</a></h1>
 
         <nav id="navbar" class="navbar">
             <security:authorize access="isAuthenticated()">
                 <a class="getstarted scrollto" href="/BookShop/user/profile">Profile</a>
-                <a class="getstarted scrollto" href="/BookShop/Books/create">Share Book</a>
+                <a class="getstarted scrollto" href="/BookShop/Books/create">Share Photo</a>
             </security:authorize>
             <c:url var="logoutUrl"  value="/logout"/>
             <security:authorize access="hasRole('ADMIN') ">
@@ -60,8 +60,8 @@
                 <thead>
                 <tr>
                     <th scope="col">writer</th>
-                    <th scope="col">Book created</th>
-                    <th scope="col">Book updated</th>
+                    <th scope="col">Photo created</th>
+                    <th scope="col">Photo updated</th>
                 </tr>
                 </thead>
                 <!--Body Lsit of Book records-->
@@ -83,11 +83,12 @@
 <c:if test="${!empty book.photos}">
 
 <c:forEach items="${book.photos}" var="photo" varStatus="status">
-<c:if test="${!status.first}">, </c:if>
+
     <%--Image of photo    --%>
 <div>
 <img class="rounded mx-auto d-block" src="<c:url value="/Books/${bookId}/photo/${photo.id}" />">
 </div>
+
 </c:forEach><br/><br/>
 </c:if>
 <%--Start Display comment--%>

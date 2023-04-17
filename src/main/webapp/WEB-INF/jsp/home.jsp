@@ -32,12 +32,12 @@
 <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center">
 
-        <h1 class="logo me-auto"><a>BookShop</a></h1>
+        <h1 class="logo me-auto"><a>PhotoShop</a></h1>
 
         <nav id="navbar" class="navbar">
             <security:authorize access="isAuthenticated()">
             <a class="getstarted scrollto" href="/BookShop/user/profile">Profile</a>
-            <a class="getstarted scrollto" href="/BookShop/Books/create">Share Book</a>
+            <a class="getstarted scrollto" href="/BookShop/Books/ShareBook">Share Photo</a>
             </security:authorize>
             <c:url var="logoutUrl"  value="/logout"/>
             <security:authorize access="hasRole('ADMIN') ">
@@ -81,11 +81,11 @@
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                     <div class="member">
                         <c:if test="${!empty entry.photos}">
-                        <c:forEach items="${entry.photos}" var="photo" varStatus="status">
-                            <c:if test="${!status.first}">, </c:if>
-                            <%--Image of User photos    --%>
-                            <img src="<c:url value="/Books/${entry.id}/photo/${photo.id}" />">
-                        </c:forEach>
+<%--                        <c:forEach items="${entry.photos}" var="photo" varStatus="status">--%>
+<%--                            <c:if test="${!status.first}">, </c:if>--%>
+<%--                            &lt;%&ndash;Image of User photos    &ndash;%&gt;--%>
+                            <img src="<c:url value="/Books/${entry.id}/photo/${entry.photos[0].id}" />">
+<%--                        </c:forEach>--%>
                         </c:if>
                         <h4><c:out value="${entry.subject}"/></h4>
                         <span> <c:out value="${entry.customerName}"/></span>

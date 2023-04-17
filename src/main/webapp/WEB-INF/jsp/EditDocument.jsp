@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <nav class="navbar navbar-light bg-dark " style="background-color: rgb(46, 52, 63)">
-    <a href="/BookShop/Books/list" class="navbar-brand mb-0 h1" style="color: rgb(255, 255, 255)">Book Well(Admin)</a>
+    <a href="/BookShop/Books/list" class="navbar-brand mb-0 h1" style="color: rgb(255, 255, 255)">PhotoShop-Admin</a>
     <c:url var="logoutUrl"  value="/logout"/>
     <form   action="${logoutUrl} " method="post">
       <input class="getstarted scrollto" type="submit" value="Logout" />
@@ -21,7 +21,7 @@
 <h2>Edit Book ${entry.id}</h2>
 <form:form method="POST" enctype="multipart/form-data"
            modelAttribute="bookForm">
-  <form:label path="subject">Book Name</form:label><br/>
+  <form:label path="subject">Photo Name</form:label><br/>
   <form:input type="text" path="subject" /><br/><br/>
   <form:label path="body">Body</form:label><br/>
   <form:textarea path="body" rows="5" cols="30" /><br/><br/>

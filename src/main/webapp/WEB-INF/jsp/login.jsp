@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>BookWell Login</title>
+    <title>PhotoShop Login</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"><link rel="stylesheet" href="./style.css">
@@ -24,8 +24,8 @@
 <div class="box-form">
     <div class="left">
         <div class="overlay">
-            <h1>Book Well</h1>
-            <p>We are book-lovers, like you. And we ship books, magazines, reference material, travel guides,
+            <h1>Photo Shop</h1>
+            <p>We are Photo-lovers, like you. And we ship photo, magazines, reference material, travel guides,
                 card stock,
             </p>
             <p>

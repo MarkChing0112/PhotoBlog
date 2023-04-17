@@ -1,6 +1,6 @@
 #FileLock
-#Sat Apr 15 15:11:27 HKT 2023
-server=192.168.1.132\:58083
-hostName=holungdaxm1m2m3
+#Mon Apr 17 15:19:04 HKT 2023
+server=192.168.50.37\:58843
+hostName=iphone14promax
 method=file
-id=18783c129e660fbb881b9eedb3dd3a1637ac84b4103
+id=1878e14da653a1a47d1b030a2b507bb6cae7b763b3b

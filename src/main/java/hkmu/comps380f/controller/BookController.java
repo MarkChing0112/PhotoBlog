@@ -47,7 +47,7 @@ public class BookController {
 
     @GetMapping("/create")
     public ModelAndView create() {
-        return new ModelAndView("CreateBook", "bookForm", new Form());
+        return new ModelAndView("CreateDocument", "bookForm", new Form());
     }
 
     @PostMapping("/create")
@@ -55,6 +55,18 @@ public class BookController {
         long bookId = bService.createBook(principal.getName(),
                 form.getSubject(), form.getBody(), form.getPhotos());
         return new RedirectView("/Books/view/" + bookId, true);
+    }
+
+    @GetMapping("/ShareBook")
+    public ModelAndView shareBook() {
+        return new ModelAndView("CreateDocument-User", "bookForm", new Form());
+    }
+
+    @PostMapping("/ShareBook")
+    public View shareBook(Form form, Principal principal) throws IOException {
+        long bookId = bService.createBook(principal.getName(),
+                form.getSubject(), form.getBody(), form.getPhotos());
+        return new RedirectView("/Books/detail/" + bookId, true);
     }
     public static class Form {
         private String subject;
@@ -156,7 +168,7 @@ public class BookController {
                 && !principal.getName().equals(book.getCustomerName()))) {
             return new ModelAndView(new RedirectView("/Books/list", true));
         }
-        ModelAndView modelAndView = new ModelAndView("EditBook");
+        ModelAndView modelAndView = new ModelAndView("EditDocument");
         modelAndView.addObject("book", book);
         Form bookForm = new Form();
         bookForm.setSubject(book.getSubject());
