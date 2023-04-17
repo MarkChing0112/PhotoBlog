@@ -21,7 +21,7 @@
         <nav id="navbar" class="navbar">
             <security:authorize access="isAuthenticated()">
                 <a class="getstarted scrollto" href="/BookShop/user/profile">Profile</a>
-                <a class="getstarted scrollto" href="/BookShop/Books/create">Share Photo</a>
+                <a class="getstarted scrollto" href="/BookShop/Books/ShareBook">Share Photo</a>
             </security:authorize>
             <c:url var="logoutUrl"  value="/logout"/>
             <security:authorize access="hasRole('ADMIN') ">
@@ -52,7 +52,7 @@
 
 
 
-<h2 style="text-align: center">Book #${bookId}: <c:out value="${book.subject}"/></h2>
+<h2 style="text-align: center">Photo #${bookId}: <c:out value="${book.subject}"/></h2>
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -81,15 +81,21 @@
 </div>
 
 <c:if test="${!empty book.photos}">
+<section id="team" class="team section-bg">
+    <div class="container">
+        <div class="row">
 
 <c:forEach items="${book.photos}" var="photo" varStatus="status">
-
+    <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+        <div class="member">
     <%--Image of photo    --%>
-<div>
-<img class="rounded mx-auto d-block" src="<c:url value="/Books/${bookId}/photo/${photo.id}" />">
-</div>
-
+        <img  src="<c:url value="/Books/${bookId}/photo/${photo.id}" />">
+        </div>
+    </div>
 </c:forEach><br/><br/>
+        </div>
+    </div>
+    </section>
 </c:if>
 <%--Start Display comment--%>
 <h2 style="text-align: center;">Comments</h2>

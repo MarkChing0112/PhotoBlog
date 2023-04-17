@@ -33,7 +33,7 @@
 </header><!-- End Header -->
 
 <security:authorize access="hasRole('ADMIN') ">
-    <h2 style="text-align: center">Book #${bookId}: <c:out value="${book.subject}"/></h2>
+    <h2 style="text-align: center">Photo #${bookId}: <c:out value="${book.subject}"/></h2>
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -71,14 +71,16 @@
 <div class="container">
     <div class="row">
         <c:forEach items="${book.photos}" var="photo" varStatus="status">
-            <c:if test="${!status.first}">, </c:if>
 
             <%--Image of User photos    --%>
-            <div class="col-sm">
+
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                <div class="member">
                 <img class="img-fluid img-thumbnail " src="<c:url value="/Books/${bookId}/photo/${photo.id}" />">
 
                     <a class="btn btn-danger" href="<c:url value="/Books/${bookId}/delete/${photo.id}" />"><span class="bi bi-trash"></span>Delete</a>
 
+            </div>
             </div>
         </c:forEach>
     </div>

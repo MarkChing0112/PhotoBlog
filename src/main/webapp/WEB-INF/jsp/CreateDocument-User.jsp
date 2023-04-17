@@ -26,7 +26,7 @@
     <form:label path="body">Body</form:label><br/>
     <form:textarea path="body" rows="5" cols="30"/><br/><br/>
     <b>photos</b><br/>
-    <input type="file" name="photos" multiple="multiple" accept="image/png, image/jpeg"/><br/><br/>
+    <input type="file" name="photos" multiple="multiple" accept="image/png, image/jpeg, image/gif"/><br/><br/>
     <input type="submit" value="Submit"/>
 </form:form>
 </body>

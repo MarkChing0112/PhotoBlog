@@ -18,7 +18,7 @@
 
         <nav  id="navbar" class="navbar">
             <a class="getstarted scrollto" href="/BookShop/user/profile">Profile</a>
-            <a class="getstarted scrollto" href="/BookShop/Books/create">Share Photo</a>
+            <a class="getstarted scrollto" href="/BookShop/Books/ShareBook">Share Photo</a>
             <c:url var="logoutUrl"  value="/logout"/>
             <security:authorize access="hasRole('ADMIN') ">
                 <a class="getstarted scrollto" role="button" href="/BookShop/Books/list" /> Manage</a>
@@ -59,7 +59,7 @@
 
             <c:otherwise>
             <div class="section-title">
-                <h2>Yours Books</h2>
+                <h2>Yours Photos</h2>
                 <p></p>
             </div>
             <div class="row">
