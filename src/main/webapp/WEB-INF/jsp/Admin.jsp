@@ -45,20 +45,7 @@
     </div>
 </nav>
 
-<h1>Book Well Admin System</h1>
-<%--<div class="container text-center">--%>
-<%--    <div class="row">--%>
-<%--        <div class="col">--%>
-<%--            <a class="btn btn-success " href="<c:url value="/Books/home" />"> <i class="bi bi-house"></i> Home</a><br/><br/>--%>
-<%--        </div>--%>
-<%--        <div class="col">--%>
-<%--            <a class="btn btn-success " href="<c:url value="/user" />"> <i class="bi bi-person"></i> Manage User Accounts</a><br/><br/>--%>
-<%--        </div>--%>
-<%--        <div class="col">--%>
-<%--            <a href="<c:url value="/Books/create" />" class="btn btn-success btn-light" style="color: rgb(248, 248, 248); background-color: green;" role="button"><span class="bi bi-file-plus"></span> Create Book</a><br/><br/>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
+<h1>Photo Blog Admin System</h1>
 
 
 <c:choose>
@@ -73,8 +60,8 @@
             <table class="table table-image">
                 <thead>
                 <tr>
-                    <th scope="col">Book ID</th>
-                    <th scope="col">Book_Name</th>
+                    <th scope="col">Photo ID</th>
+                    <th scope="col">Photo_Name</th>
                     <th scope="col">User_Name</th>
 
                     <th scope="col">Action</th>
@@ -87,17 +74,17 @@
       <tr>
 
       </tr>
-<th scope="row">Book ${entry.id}:</th>
+<th scope="row">Photo ${entry.id}:</th>
     <td> <a href="<c:url value="/Photos/view/${entry.id}" />">
         <c:out value="${entry.subject}"/></a></td>
      <td>(customer: <c:out value="${entry.customerName}"/>)</td>
 
       <%--   Display Edit Button   --%>
 <td>
-      <security:authorize access="hasRole('ADMIN') or
-                principal.username=='${entry.customerName}'">
-        <a class="btn btn-primary" role="button" href="<c:url value="/Photos/edit/${entry.id}" />"> <i class="bi bi-pencil-square"></i>Edit</a>
-      </security:authorize>
+<%--      <security:authorize access="hasRole('ADMIN') or--%>
+<%--                principal.username=='${entry.customerName}'">--%>
+<%--        <a class="btn btn-primary" role="button" href="<c:url value="/Photos/edit/${entry.id}" />"> <i class="bi bi-pencil-square"></i>Edit</a>--%>
+<%--      </security:authorize>--%>
 
 
 <%--      Display Delete Button--%>
