@@ -71,7 +71,7 @@
 
             <c:otherwise>
             <div class="section-title">
-                <h2>Books</h2>
+                <h2>Photos</h2>
                 <p></p>
             </div>
 

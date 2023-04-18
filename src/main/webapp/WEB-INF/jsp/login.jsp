@@ -24,7 +24,7 @@
 <div class="box-form">
     <div class="left">
         <div class="overlay">
-            <h1>PhotoBlog</h1>
+            <h1>Photo Blog</h1>
             <p>We are Photo-lovers, like you. And we ship photo, magazines, reference material, travel guides,
                 card stock,
             </p>
@@ -49,6 +49,7 @@
 
     </div>
     <a type="button" href="<c:url value="/user/create"/>">Sign Up</a>
+    <a type="button" href="<c:url value="/Photos/home"/>">Visit As Anonymous</a>
 </form>
 </body>
 </html>

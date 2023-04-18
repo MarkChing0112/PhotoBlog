@@ -88,7 +88,7 @@ public class UserManagementController {
 
     @GetMapping("/profile")
     public ModelAndView profile(ModelMap model, Principal principal){
-        model.addAttribute("bookDatabase", bService.getBooks());
+        model.addAttribute("bookDatabase", bService.getBooksByUser(principal.getName()));
         model.addAttribute("User", umService.getTicketUser(principal.getName()));
         return new ModelAndView("profile", "descriptionForm", new descriptionForm());
     }

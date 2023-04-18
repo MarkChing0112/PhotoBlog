@@ -54,7 +54,7 @@
 
             <c:choose>
             <c:when test="${fn:length(bookDatabase) == 0}">
-                <i>You did not share any books</i>
+                <i>You did not share any photos</i>
             </c:when>
 
             <c:otherwise>
