@@ -14,12 +14,12 @@
 <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center">
 
-        <h1 class="logo me-auto"><a href="/BookShop/Books/list" >PhotoBlog</a></h1>
+        <h1 class="logo me-auto"><a href="/PhotoBlog/Photos/list" >PhotoBlog</a></h1>
 
         <nav id="navbar" class="navbar">
             <c:url var="logoutUrl"  value="/logout"/>
             <security:authorize access="hasRole('ADMIN') ">
-                <a class="getstarted scrollto" role="button" href="/BookShop/Books/list" /> Manage</a>
+                <a class="getstarted scrollto" role="button" href="/PhotoBlog/Photos/list" /> Manage</a>
             </security:authorize>
             <form   action="${logoutUrl} " method="post">
                 <input class="getstarted scrollto" type="submit" value="Logout" />
@@ -56,7 +56,7 @@
                         <fmt:formatDate value="${book.updateTime}"
                                         pattern="EEE, d MMM yyyy HH:mm:ss Z"/>
                     </td>
-                    <td><a class="btn btn-primary" href="<c:url value="/Books/edit/${book.id}" />"> <span class="bi bi-pencil-square"/>Edit</a></td>
+                    <td><a class="btn btn-primary" href="<c:url value="/Photos/edit/${book.id}" />"> <span class="bi bi-pencil-square"/>Edit</a></td>
                         <%--      Display Delete Button--%>
 
                     </td>
@@ -76,9 +76,9 @@
 
             <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                 <div class="member">
-                <img class="img-fluid img-thumbnail " src="<c:url value="/Books/${bookId}/photo/${photo.id}" />">
+                <img class="img-fluid img-thumbnail " src="<c:url value="/Photos/${bookId}/photo/${photo.id}" />">
 
-                    <a class="btn btn-danger" href="<c:url value="/Books/${bookId}/delete/${photo.id}" />"><span class="bi bi-trash"></span>Delete</a>
+                    <a class="btn btn-danger" href="<c:url value="/Photos/${bookId}/delete/${photo.id}" />"><span class="bi bi-trash"></span>Delete</a>
 
             </div>
             </div>
@@ -109,7 +109,7 @@
                     <small> <fmt:formatDate value="${comments.createTime}"
                                             pattern="EEE, d MMM yyyy HH:mm:ss Z"/></small>
                     <security:authorize access="hasRole('ADMIN')">
-                        <a class="btn btn-danger" href="<c:url value="/Books/${bookId}/deleteComment/${comments.id}" />"><span class="bi bi-trash"></span>Delete</a>
+                        <a class="btn btn-danger" href="<c:url value="/Photos/${bookId}/deleteComment/${comments.id}" />"><span class="bi bi-trash"></span>Delete</a>
                     </security:authorize>
 
 

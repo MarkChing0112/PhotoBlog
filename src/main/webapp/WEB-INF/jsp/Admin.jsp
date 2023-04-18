@@ -14,16 +14,6 @@
 
 
 
-<%--    Navbar--%>
-<%--    <nav class="navbar navbar-light bg-dark " style="background-color: rgb(46, 52, 63)">--%>
-<%--        <a class="navbar-brand mb-0 h1" style="color: rgb(255, 255, 255)">Book Well(Admin)</a>--%>
-<%--        <c:url var="logoutUrl"  value="/logout"/>--%>
-<%--        <form   action="${logoutUrl} " method="post">--%>
-<%--            <input class="getstarted scrollto" type="submit" value="Logout" />--%>
-<%--            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
-<%--        </form>--%>
-<%--    </nav>--%>
-
 </head>
 <body>
 <nav class="navbar navbar-light bg-dark " style="background-color: rgb(46, 52, 63)">
@@ -36,13 +26,13 @@
             <div class="navbar-nav"></div>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="<c:url value="/Books/home" />" style="color: rgb(255, 255, 255)"> Home</a>
+                    <a class="nav-link" href="<c:url value="/Photos/home" />" style="color: rgb(255, 255, 255)"> Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="<c:url value="/user" />" style="color: rgb(255, 255, 255)">  Manage User Accounts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  href="<c:url value="/Books/create" />" style="color: rgb(255, 255, 255)" role="button"> Create Photo</a>
+                    <a class="nav-link"  href="<c:url value="/Photos/create" />" style="color: rgb(255, 255, 255)" role="button"> Create Photo</a>
                 </li>
             </ul>
             <form class="d-flex" role="search">
@@ -98,7 +88,7 @@
 
       </tr>
 <th scope="row">Book ${entry.id}:</th>
-    <td> <a href="<c:url value="/Books/view/${entry.id}" />">
+    <td> <a href="<c:url value="/Photos/view/${entry.id}" />">
         <c:out value="${entry.subject}"/></a></td>
      <td>(customer: <c:out value="${entry.customerName}"/>)</td>
 
@@ -106,13 +96,13 @@
 <td>
       <security:authorize access="hasRole('ADMIN') or
                 principal.username=='${entry.customerName}'">
-        <a class="btn btn-primary" role="button" href="<c:url value="/Books/edit/${entry.id}" />"> <i class="bi bi-pencil-square"></i>Edit</a>
+        <a class="btn btn-primary" role="button" href="<c:url value="/Photos/edit/${entry.id}" />"> <i class="bi bi-pencil-square"></i>Edit</a>
       </security:authorize>
 
 
 <%--      Display Delete Button--%>
     <security:authorize access="hasRole('ADMIN') or principal.username=='${entry.customerName}'">
-        <a class="btn btn-danger" href="<c:url value="/Books/delete/${entry.id}" />"> <span class="bi bi-trash"></span>Delete</a><br/><br/>
+        <a class="btn btn-danger" href="<c:url value="/Photos/delete/${entry.id}" />"> <span class="bi bi-trash"></span>Delete</a><br/><br/>
     </security:authorize>
     </c:forEach>
     </td>

@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("/Books")
+@RequestMapping("/Photos")
 public class BookController {
 
     @Resource
@@ -54,19 +54,19 @@ public class BookController {
     public View create(Form form, Principal principal) throws IOException {
         long bookId = bService.createBook(principal.getName(),
                 form.getSubject(), form.getBody(), form.getPhotos());
-        return new RedirectView("/Books/view/" + bookId, true);
+        return new RedirectView("/Photos/view/" + bookId, true);
     }
 
-    @GetMapping("/ShareBook")
-    public ModelAndView shareBook() {
+    @GetMapping("/SharePhoto")
+    public ModelAndView sharePhoto() {
         return new ModelAndView("CreateDocument-User", "bookForm", new Form());
     }
 
-    @PostMapping("/ShareBook")
-    public View shareBook(Form form, Principal principal) throws IOException {
+    @PostMapping("/SharePhoto")
+    public View sharePhoto(Form form, Principal principal) throws IOException {
         long bookId = bService.createBook(principal.getName(),
                 form.getSubject(), form.getBody(), form.getPhotos());
-        return new RedirectView("/Books/detail/" + bookId, true);
+        return new RedirectView("/Photos/detail/" + bookId, true);
     }
     public static class Form {
         private String subject;
@@ -127,7 +127,7 @@ public class BookController {
                                 @PathVariable("cid") UUID cid)
             throws BookNotFound {
         bService.deleteComment(bookId,cid);
-        return "redirect:/Books/view/" + bookId;
+        return "redirect:/Photos/view/" + bookId;
     }
     @GetMapping("/{bookId}/photo/{photo:.+}")
     public View download(@PathVariable("bookId") long bookId,
@@ -142,7 +142,7 @@ public class BookController {
     public String deleteBook(@PathVariable("bookId") long bookId)
             throws BookNotFound {
         bService.delete(bookId);
-        return "redirect:/Books/list";
+        return "redirect:/Photos/list";
     }
 
     @GetMapping("/{bookId}/delete/{photo:.+}")
@@ -150,7 +150,7 @@ public class BookController {
                                    @PathVariable("photo") UUID photoId)
             throws BookNotFound, PhotoNotFound {
         bService.deleteBook(bookId, photoId);
-        return "redirect:/Books/view/" + bookId;
+        return "redirect:/Photos/view/" + bookId;
     }
 
     @ExceptionHandler({BookNotFound.class, PhotoNotFound.class})
@@ -166,7 +166,7 @@ public class BookController {
         if (book == null
                 || (!request.isUserInRole("ROLE_ADMIN")
                 && !principal.getName().equals(book.getCustomerName()))) {
-            return new ModelAndView(new RedirectView("/Books/list", true));
+            return new ModelAndView(new RedirectView("/Photos/list", true));
         }
         ModelAndView modelAndView = new ModelAndView("EditDocument");
         modelAndView.addObject("book", book);
@@ -184,11 +184,11 @@ public class BookController {
         if (book == null
                 || (!request.isUserInRole("ROLE_ADMIN")
                 && !principal.getName().equals(book.getCustomerName()))) {
-            return "redirect:/Books/list";
+            return "redirect:/Photos/list";
         }
         bService.updateBook(bookId, form.getSubject(),
                 form.getBody(), form.getPhotos());
-        return "redirect:/Books/view/" + bookId;
+        return "redirect:/Photos/view/" + bookId;
     }
 
 //    User Detail
@@ -208,7 +208,7 @@ public class BookController {
             throws IOException {
 
         bService.createComment(principal.getName(),form.getBody(),bookId);
-        return new RedirectView("/Books/detail/" + bookId, true);
+        return new RedirectView("/Photos/detail/" + bookId, true);
     }
 }
 

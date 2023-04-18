@@ -36,16 +36,16 @@
 
         <nav id="navbar" class="navbar">
             <security:authorize access="isAuthenticated()">
-            <a class="getstarted scrollto" href="/BookShop/user/profile">Profile</a>
-            <a class="getstarted scrollto" href="/BookShop/Books/ShareBook">Share Photo</a>
+            <a class="getstarted scrollto" href="/PhotoBlog/user/profile">Profile</a>
+            <a class="getstarted scrollto" href="/PhotoBlog/Photos/SharePhoto">Share Photo</a>
             </security:authorize>
             <c:url var="logoutUrl"  value="/logout"/>
             <security:authorize access="hasRole('ADMIN') ">
-                <a class="getstarted scrollto" role="button" href="/BookShop/Books/list" /> Manage</a>
+                <a class="getstarted scrollto" role="button" href="/PhotoBlog/Photos/list" /> Manage</a>
             </security:authorize>
 
             <security:authorize access ="isAnonymous() ">
-                <a class="getstarted scrollto" role="button" href="/BookShop/login" /> Login</a>
+                <a class="getstarted scrollto" role="button" href="/PhotoBlog/login" /> Login</a>
             </security:authorize>
 <%--LOGOUT--%>
             <security:authorize access="isAuthenticated() ">
@@ -84,13 +84,13 @@
 <%--                        <c:forEach items="${entry.photos}" var="photo" varStatus="status">--%>
 <%--                            <c:if test="${!status.first}">, </c:if>--%>
 <%--                            &lt;%&ndash;Image of User photos    &ndash;%&gt;--%>
-                            <img src="<c:url value="/Books/${entry.id}/photo/${entry.photos[0].id}" />">
+                            <img src="<c:url value="/Photos/${entry.id}/photo/${entry.photos[0].id}" />">
 <%--                        </c:forEach>--%>
                         </c:if>
                         <h4><c:out value="${entry.subject}"/></h4>
                         <span> <c:out value="${entry.customerName}"/></span>
 
-                        <a class="btn btn-primary" role="button" href="<c:url value="/Books/detail/${entry.id}"/>">
+                        <a class="btn btn-primary" role="button" href="<c:url value="/Photos/detail/${entry.id}"/>">
                             Details
                         </a>
                     </div>

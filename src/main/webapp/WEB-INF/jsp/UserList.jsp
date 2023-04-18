@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <nav class="navbar navbar-light bg-dark justify-content-between" style="background-color: rgb(46, 52, 63)">
-        <a  href="<c:url value="/Books/list" />" class="navbar-brand mb-0 h1" style="color: rgb(255, 255, 255)"  >PhotoBlog-Admin</a>
+        <a  href="<c:url value="/Photos/list" />" class="navbar-brand mb-0 h1" style="color: rgb(255, 255, 255)"  >PhotoBlog-Admin</a>
         <c:url var="logoutUrl"  value="/logout"/>
         <form  action="${logoutUrl} " method="post">
             <input class="getstarted scrollto" type="submit" value="Logout" />

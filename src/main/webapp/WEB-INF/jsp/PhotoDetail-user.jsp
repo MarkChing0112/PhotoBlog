@@ -20,16 +20,16 @@
 
         <nav id="navbar" class="navbar">
             <security:authorize access="isAuthenticated()">
-                <a class="getstarted scrollto" href="/BookShop/user/profile">Profile</a>
-                <a class="getstarted scrollto" href="/BookShop/Books/ShareBook">Share Photo</a>
+                <a class="getstarted scrollto" href="/PhotoBlog/user/profile">Profile</a>
+                <a class="getstarted scrollto" href="/PhotoBlog/Photos/SharePhoto">Share Photo</a>
             </security:authorize>
             <c:url var="logoutUrl"  value="/logout"/>
             <security:authorize access="hasRole('ADMIN') ">
-                <a class="getstarted scrollto" role="button" href="/BookShop/Books/list" /> Manage</a>
+                <a class="getstarted scrollto" role="button" href="/PhotoBlog/Photos/list" /> Manage</a>
             </security:authorize>
 
             <security:authorize access ="isAnonymous() ">
-                <a class="getstarted scrollto" role="button" href="/BookShop/login" /> Login</a>
+                <a class="getstarted scrollto" role="button" href="/PhotoBlog/login" /> Login</a>
             </security:authorize>
             <%--LOGOUT--%>
             <security:authorize access="isAuthenticated() ">
@@ -89,7 +89,7 @@
     <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
         <div class="member">
     <%--Image of photo    --%>
-        <img  src="<c:url value="/Books/${bookId}/photo/${photo.id}" />">
+        <img  src="<c:url value="/Photos/${bookId}/photo/${photo.id}" />">
         </div>
     </div>
 </c:forEach><br/><br/>

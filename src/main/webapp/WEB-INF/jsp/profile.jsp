@@ -17,11 +17,11 @@
         <h1 class="logo me-auto"><a href="/BookShop/Books/home">PhotoBlog</a></h1>
 
         <nav  id="navbar" class="navbar">
-            <a class="getstarted scrollto" href="/BookShop/user/profile">Profile</a>
-            <a class="getstarted scrollto" href="/BookShop/Books/ShareBook">Share Photo</a>
+            <a class="getstarted scrollto" href="/PhotoBlog/user/profile">Profile</a>
+            <a class="getstarted scrollto" href="/PhotoBlog/Photos/SharePhoto">Share Photo</a>
             <c:url var="logoutUrl"  value="/logout"/>
             <security:authorize access="hasRole('ADMIN') ">
-                <a class="getstarted scrollto" role="button" href="/BookShop/Books/list" /> Manage</a>
+                <a class="getstarted scrollto" role="button" href="/PhotoBlog/Photos/list" /> Manage</a>
             </security:authorize>
             <form   action="${logoutUrl} " method="post">
                 <input class="getstarted scrollto" type="submit" value="Logout" />
@@ -72,7 +72,7 @@
                     <security:authorize access="principal.username=='${entry.customerName}'">
 
                         <%--Image of User photos    --%>
-                        <img src="<c:url value="/Books/${entry.id}/photo/${photo.id}" />">
+                        <img src="<c:url value="/Photos/${entry.id}/photo/${photo.id}" />">
                         <fmt:formatDate value="${entry.createTime}"
                                         pattern="EEE, d MMM yyyy HH:mm:ss Z"/></small>
                     </security:authorize>
