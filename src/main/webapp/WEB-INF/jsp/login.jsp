@@ -24,7 +24,7 @@
 <div class="box-form">
     <div class="left">
         <div class="overlay">
-            <h1>Photo Shop</h1>
+            <h1>PhotoBlog</h1>
             <p>We are Photo-lovers, like you. And we ship photo, magazines, reference material, travel guides,
                 card stock,
             </p>

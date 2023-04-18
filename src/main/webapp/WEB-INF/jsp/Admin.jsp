@@ -28,7 +28,7 @@
 <body>
 <nav class="navbar navbar-light bg-dark " style="background-color: rgb(46, 52, 63)">
     <div class="container-fluid">
-        <a class="navbar-brand " style="color: rgb(255, 255, 255)">PhotoShop-Admin</a>
+        <a class="navbar-brand " style="color: rgb(255, 255, 255)">PhotoBlog-Admin</a>
         <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

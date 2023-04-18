@@ -32,7 +32,7 @@
 <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center">
 
-        <h1 class="logo me-auto"><a>PhotoShop</a></h1>
+        <h1 class="logo me-auto"><a>PhotoBlog</a></h1>
 
         <nav id="navbar" class="navbar">
             <security:authorize access="isAuthenticated()">
