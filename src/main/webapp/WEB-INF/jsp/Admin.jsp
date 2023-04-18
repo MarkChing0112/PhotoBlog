@@ -18,7 +18,7 @@
 <body>
 <nav class="navbar navbar-light bg-dark " style="background-color: rgb(46, 52, 63)">
     <div class="container-fluid">
-        <a class="navbar-brand " style="color: rgb(255, 255, 255)">PhotoBlog-Admin</a>
+        <a class="navbar-brand " href="/PhotoBlog/Photos/list"style="color: rgb(255, 255, 255)">PhotoBlog-Admin</a>
         <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -35,11 +35,10 @@
                     <a class="nav-link"  href="<c:url value="/Photos/create" />" style="color: rgb(255, 255, 255)" role="button"> Create Photo</a>
                 </li>
             </ul>
-            <form class="d-flex" role="search">
-                <form   action="${logoutUrl} " method="post">
-                    <input class="getstarted scrollto" type="submit" value="Logout" />
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                </form>
+            <c:url var="logoutUrl"  value="/logout"/>
+            <form class="d-flex" action="${logoutUrl} " method="post">
+                <input class="getstarted scrollto" type="submit" value="Logout" />
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form>
         </div>
     </div>
